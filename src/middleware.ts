@@ -4,8 +4,8 @@ import type { NextRequest } from "next/server";
 // const ALLOWED_COUNTRIES = ["US", "IN", "PK"];
 
 // // Canonicalization (www ↔ non-www) is owned entirely by nginx at the edge,
-// // which redirects www.creeklend.com → creeklend.com. The middleware must NOT
-// // redirect in the opposite direction, or every request on creeklend.com ends
+// // which redirects www.brookloans.com → brookloans.com. The middleware must NOT
+// // redirect in the opposite direction, or every request on brookloans.com ends
 // // up in an nginx↔middleware redirect loop that also breaks client-side RSC
 // // navigation (e.g. admin <Link> clicks silently doing nothing).
 
@@ -44,9 +44,9 @@ const ALLOWED_COUNTRIES = ["US", "IN", "PK"];
 
 // / Only the canonical host should serve content; the apex domain
 // (and any www-less variant) is permanently redirected to it so that
-// both creeklend.com and www.creeklend.com resolve to one indexable URL.
-const CANONICAL_HOST = "www.creeklend.com";
-const APEX_HOST = "creeklend.com";
+// both brookloans.com and www.brookloans.com resolve to one indexable URL.
+const CANONICAL_HOST = "www.brookloans.com";
+const APEX_HOST = "brookloans.com";
 
 export function middleware(request: NextRequest) {
   // Only apply geo-blocking to the apply route and specific API routes

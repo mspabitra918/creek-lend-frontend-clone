@@ -35,7 +35,7 @@ export default function FairLendingPage() {
                 Equal Opportunity Lender
               </h2>
               <p>
-                {SITE_NAME} is an Creek Lend and is committed to fair lending
+                {SITE_NAME} is an Brook Loans and is committed to fair lending
                 practices. We provide equal access to credit for all qualified
                 borrowers regardless of race, color, religion, national origin,
                 sex, marital status, age (provided the applicant has the

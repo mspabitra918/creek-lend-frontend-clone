@@ -3,13 +3,13 @@ import { headers } from "next/headers";
 import { SITE_URL } from "@/lib/constants";
 
 // Only the canonical production host should be indexable.
-const CANONICAL_HOST = "www.creeklend.com";
+const CANONICAL_HOST = "www.brookloans.com";
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const host = (await headers()).get("host") ?? "";
 
-  // Any non-canonical host (apex creeklend.com, Vercel preview domains, etc.)
-  // is fully disallowed so only www.creeklend.com gets indexed.
+  // Any non-canonical host (apex brookloans.com, Vercel preview domains, etc.)
+  // is fully disallowed so only www.brookloans.com gets indexed.
   if (host !== CANONICAL_HOST) {
     return {
       rules: [{ userAgent: "*", disallow: "/" }],

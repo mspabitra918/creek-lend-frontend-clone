@@ -6,7 +6,7 @@ import { SITE_NAME } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Rates & Fees — Transparent Personal Loan Pricing",
   description:
-    "View Creek Lend's transparent personal loan rates and fees. One-time 10% flat fee with no hidden charges. $0 upfront fees on all loans.",
+    "View Brook Loans's transparent personal loan rates and fees. One-time 10% flat fee with no hidden charges. $0 upfront fees on all loans.",
   alternates: { canonical: "/rates-and-fees" },
 };
 
@@ -101,13 +101,13 @@ export default function RatesAndFeesPage() {
             Transparent Rates Nationwide (All 50 US States)
           </h2>
           <p className="text-text-secondary mb-6">
-            Creek Lend provides a consistent fixed 10% APR regardless of your
+            Brook Loans provides a consistent fixed 10% APR regardless of your
             state. We believe geography shouldn&apos;t dictate your cost of
             capital.
           </p>
           <p className="text-xs text-text-secondary mb-6 italic">
-            Availability of specific loan terms may vary based on
-            state-specific regulations.
+            Availability of specific loan terms may vary based on state-specific
+            regulations.
           </p>
           <div className="bg-white rounded-xl shadow-md border border-surface-dark overflow-hidden mb-12">
             <div className="overflow-x-auto">
@@ -160,8 +160,8 @@ export default function RatesAndFeesPage() {
             </h2>
             <p className="text-text-secondary mb-6">
               Most lenders hide behind confusing compound interest formulas.
-              Creek Lend keeps it simple with a fixed 10% APR so you always know
-              exactly what you&apos;ll pay each month.
+              Brook Loans keeps it simple with a fixed 10% APR so you always
+              know exactly what you&apos;ll pay each month.
             </p>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
@@ -265,7 +265,7 @@ export default function RatesAndFeesPage() {
               Pricing Disclosure
             </h3>
             <p>
-              Creek Lend offers a fixed 10% Annual Percentage Rate (APR) on all
+              Brook Loans offers a fixed 10% Annual Percentage Rate (APR) on all
               personal loans. We do not charge upfront fees, application fees,
               or origination fees. Your cost of capital is transparent and fixed
               for the life of the loan.

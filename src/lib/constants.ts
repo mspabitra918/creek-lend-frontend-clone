@@ -1,8 +1,8 @@
-export const SITE_NAME = "Creek Lend";
-export const SITE_URL = "https://www.creeklend.com";
+export const SITE_NAME = "Brook Loans";
+export const SITE_URL = "https://www.brookloans.com";
 export const SITE_DESCRIPTION =
-  "Creek Lend is a direct personal loan provider offering competitive rates for debt consolidation, home improvement, medical expenses, and more. Apply online in minutes.";
-export const BUSINESS_EMAIL = "support@creeklend.com";
+  "Brook Loans is a direct personal loan provider offering competitive rates for debt consolidation, home improvement, medical expenses, and more. Apply online in minutes.";
+export const BUSINESS_EMAIL = "support@brookloans.com";
 
 export const BUSINESS_PHONE = "(747) 208-0334";
 

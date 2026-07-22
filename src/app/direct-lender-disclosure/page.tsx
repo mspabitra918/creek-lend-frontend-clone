@@ -14,7 +14,10 @@ export default function DirectLenderDisclosurePage() {
       <BreadcrumbSchema
         items={[
           { name: "Home", url: "/" },
-          { name: "Direct Lender Disclosure", url: "/direct-lender-disclosure" },
+          {
+            name: "Direct Lender Disclosure",
+            url: "/direct-lender-disclosure",
+          },
         ]}
       />
 
@@ -35,7 +38,11 @@ export default function DirectLenderDisclosurePage() {
                 {SITE_NAME} is a Direct Lender
               </h2>
               <p className="text-text-primary font-medium">
-                {SITE_NAME} is a direct lender that makes its own credit decisions and funds loans directly. We are NOT a loan broker, loan marketplace, lead generator, or aggregator. When you apply with {SITE_NAME}, your application is reviewed and processed entirely by us.
+                {SITE_NAME} is a direct lender that makes its own credit
+                decisions and funds loans directly. We are NOT a loan broker,
+                loan marketplace, lead generator, or aggregator. When you apply
+                with {SITE_NAME}, your application is reviewed and processed
+                entirely by us.
               </p>
             </div>
 
@@ -47,23 +54,29 @@ export default function DirectLenderDisclosurePage() {
                 {[
                   {
                     title: "One Application, One Lender",
-                    description: "Your application is reviewed only by Creek Lend. We do not sell or share your application with other lenders.",
+                    description:
+                      "Your application is reviewed only by Brook Loans. We do not sell or share your application with other lenders.",
                   },
                   {
                     title: "Faster Decisions",
-                    description: "Because we make our own credit decisions, you get faster responses without waiting for third-party reviews.",
+                    description:
+                      "Because we make our own credit decisions, you get faster responses without waiting for third-party reviews.",
                   },
                   {
                     title: "Direct Communication",
-                    description: "You deal directly with us throughout the entire process — from application to funding to repayment.",
+                    description:
+                      "You deal directly with us throughout the entire process — from application to funding to repayment.",
                   },
                   {
                     title: "Data Privacy",
-                    description: "Your personal and financial information stays with us. We never sell your data to other lenders or lead buyers.",
+                    description:
+                      "Your personal and financial information stays with us. We never sell your data to other lenders or lead buyers.",
                   },
                 ].map((item) => (
                   <div key={item.title} className="bg-surface rounded-xl p-6">
-                    <h3 className="font-bold text-text-primary mb-2">{item.title}</h3>
+                    <h3 className="font-bold text-text-primary mb-2">
+                      {item.title}
+                    </h3>
                     <p className="text-sm">{item.description}</p>
                   </div>
                 ))}
@@ -75,9 +88,17 @@ export default function DirectLenderDisclosurePage() {
                 Loan Details
               </h2>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Loan amounts: ${LOAN_LIMITS.minAmount.toLocaleString()} to ${LOAN_LIMITS.maxAmount.toLocaleString()}</li>
-                <li>APR range: {LOAN_LIMITS.minAPR}% to {LOAN_LIMITS.maxAPR}%</li>
-                <li>Repayment terms: {LOAN_LIMITS.minTerm} to {LOAN_LIMITS.maxTerm} months</li>
+                <li>
+                  Loan amounts: ${LOAN_LIMITS.minAmount.toLocaleString()} to $
+                  {LOAN_LIMITS.maxAmount.toLocaleString()}
+                </li>
+                <li>
+                  APR range: {LOAN_LIMITS.minAPR}% to {LOAN_LIMITS.maxAPR}%
+                </li>
+                <li>
+                  Repayment terms: {LOAN_LIMITS.minTerm} to{" "}
+                  {LOAN_LIMITS.maxTerm} months
+                </li>
                 <li>Loan type: Fixed-rate unsecured personal loans</li>
                 <li>Origination fee: 1% to 6% of loan amount</li>
                 <li>No prepayment penalties</li>
@@ -89,7 +110,9 @@ export default function DirectLenderDisclosurePage() {
                 Licensing
               </h2>
               <p>
-                {SITE_NAME} is licensed to lend in the states where it operates. Our NMLS number is XXXXXXX. You can verify our licensing status through the NMLS Consumer Access website.
+                {SITE_NAME} is licensed to lend in the states where it operates.
+                Our NMLS number is XXXXXXX. You can verify our licensing status
+                through the NMLS Consumer Access website.
               </p>
             </div>
 
@@ -98,10 +121,15 @@ export default function DirectLenderDisclosurePage() {
                 Questions?
               </h2>
               <p>
-                If you have any questions about our status as a direct lender, please contact us at{" "}
-                <a href={`mailto:${BUSINESS_EMAIL}`} className="text-primary hover:underline">
+                If you have any questions about our status as a direct lender,
+                please contact us at{" "}
+                <a
+                  href={`mailto:${BUSINESS_EMAIL}`}
+                  className="text-primary hover:underline"
+                >
                   {BUSINESS_EMAIL}
-                </a>.
+                </a>
+                .
               </p>
             </div>
           </div>

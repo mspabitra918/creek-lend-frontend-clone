@@ -50,7 +50,7 @@ export default function AdminLoginPage() {
           <div className="text-center mb-8">
             <Image
               src="/logo-dark.png"
-              alt="Creek Lend"
+              alt="Brook Loans"
               width={180}
               height={45}
               className="mx-auto"
@@ -79,7 +79,7 @@ export default function AdminLoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
-                placeholder="admin@creeklend.com"
+                placeholder="admin@brookloans.com"
               />
             </div>
 

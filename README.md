@@ -1,4 +1,4 @@
-# Creek Lend
+# Brook Loans
 
 A modern loan application and management platform built for Creek Financial Services.
 
@@ -8,46 +8,46 @@ A modern loan application and management platform built for Creek Financial Serv
 
 ### Platform
 
-| Layer      | Technology                        |
-| ---------- | --------------------------------- |
-| Hosting    | **Vercel** (Serverless)           |
-| Runtime    | **Node.js**                       |
-| Language   | **TypeScript 5.9**                |
+| Layer    | Technology              |
+| -------- | ----------------------- |
+| Hosting  | **Vercel** (Serverless) |
+| Runtime  | **Node.js**             |
+| Language | **TypeScript 5.9**      |
 
 ### Frontend
 
-| Category          | Technology                                      |
-| ----------------- | ----------------------------------------------- |
-| Framework         | **Next.js 16** (App Router, Server Components)  |
-| UI Library        | **React 19**                                    |
-| Styling           | **Tailwind CSS 4**                              |
-| Form Validation   | **Zod 4** (schema-based validation)             |
-| Notifications     | **React Hot Toast**                             |
-| Maps              | **Google Maps JS API** (@googlemaps/js-api-loader) |
-| Icons             | **Lucide React**                                |
+| Category        | Technology                                         |
+| --------------- | -------------------------------------------------- |
+| Framework       | **Next.js 16** (App Router, Server Components)     |
+| UI Library      | **React 19**                                       |
+| Styling         | **Tailwind CSS 4**                                 |
+| Form Validation | **Zod 4** (schema-based validation)                |
+| Notifications   | **React Hot Toast**                                |
+| Maps            | **Google Maps JS API** (@googlemaps/js-api-loader) |
+| Icons           | **Lucide React**                                   |
 
 ### Backend
 
-| Category          | Technology                                                  |
-| ----------------- | ----------------------------------------------------------- |
-| API Layer         | **Next.js API Routes** (proxied to backend via rewrites)    |
-| Backend Server    | Separate **Vercel**-hosted backend (`loan-app-ka1t.vercel.app`) |
-| Authentication    | Custom admin authentication (token-based)                   |
-| Middleware        | **Next.js Middleware** for route protection                 |
+| Category       | Technology                                                      |
+| -------------- | --------------------------------------------------------------- |
+| API Layer      | **Next.js API Routes** (proxied to backend via rewrites)        |
+| Backend Server | Separate **Vercel**-hosted backend (`loan-app-ka1t.vercel.app`) |
+| Authentication | Custom admin authentication (token-based)                       |
+| Middleware     | **Next.js Middleware** for route protection                     |
 
 ### Database
 
-| Category   | Technology                                     |
-| ---------- | ---------------------------------------------- |
-| Database   | **Neon PostgreSQL** (Serverless Postgres)      |
-| Driver     | **@neondatabase/serverless** (HTTP-based driver) |
+| Category | Technology                                       |
+| -------- | ------------------------------------------------ |
+| Database | **Neon PostgreSQL** (Serverless Postgres)        |
+| Driver   | **@neondatabase/serverless** (HTTP-based driver) |
 
 ### Analytics & Tracking
 
-| Category   | Technology                  |
-| ---------- | --------------------------- |
-| Analytics  | **Google Analytics (GA4)**  |
-| Pixel      | **Facebook Pixel**          |
+| Category  | Technology                 |
+| --------- | -------------------------- |
+| Analytics | **Google Analytics (GA4)** |
+| Pixel     | **Facebook Pixel**         |
 
 ### Security
 
@@ -60,12 +60,12 @@ A modern loan application and management platform built for Creek Financial Serv
 
 ### Build & Dev Tools
 
-| Tool       | Version / Details     |
-| ---------- | --------------------- |
-| ESLint     | 9.x (with Next.js config) |
-| PostCSS    | 8.x                  |
-| Autoprefixer | 10.x               |
-| Critters   | CSS inlining optimization |
+| Tool         | Version / Details         |
+| ------------ | ------------------------- |
+| ESLint       | 9.x (with Next.js config) |
+| PostCSS      | 8.x                       |
+| Autoprefixer | 10.x                      |
+| Critters     | CSS inlining optimization |
 
 ---
 
@@ -126,10 +126,10 @@ npm start
 
 ## Environment Variables
 
-| Variable                        | Description                        |
-| ------------------------------- | ---------------------------------- |
-| `NEXT_PUBLIC_API_URL`           | Backend API base URL               |
-| `NEXT_PUBLIC_API_URL_OVERRIDE`  | Optional API URL override          |
+| Variable                       | Description               |
+| ------------------------------ | ------------------------- |
+| `NEXT_PUBLIC_API_URL`          | Backend API base URL      |
+| `NEXT_PUBLIC_API_URL_OVERRIDE` | Optional API URL override |
 
 ---
 

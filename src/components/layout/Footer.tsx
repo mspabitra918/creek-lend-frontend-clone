@@ -19,15 +19,19 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="mb-4">
-              <Image
+              {/* <Image
                 src="/logo-white.png"
                 alt={SITE_NAME}
                 width={160}
                 height={40}
-              />
+              /> */}
+              <span className=" font-extrabold tracking-tight text-white text-3xl">
+                Brook<span className="text-white font-normal"> Loans</span>
+              </span>
             </div>
+
             <p className="text-white/70 text-sm leading-relaxed">
-              Creek Lend is a direct lender providing personal loans to
+              Brook Loans is a direct lender providing personal loans to
               borrowers across the United States. We are committed to
               transparent lending practices and PST-speed service.
             </p>
@@ -162,11 +166,11 @@ export default function Footer() {
         {/* APR Disclosure */}
         <div className="mt-8 pt-8 border-t border-white/10">
           <p className="text-xs text-white/50 leading-relaxed">
-            Creek Lend offers a fixed 10% APR on all personal loans. Loan
+            Brook Loans offers a fixed 10% APR on all personal loans. Loan
             amounts range from ${LOAN_LIMITS.minAmount.toLocaleString()} to $
             {LOAN_LIMITS.maxAmount.toLocaleString()} with terms from{" "}
-            {LOAN_LIMITS.minTerm} to {LOAN_LIMITS.maxTerm} months. Creek Lend is
-            a California-based direct lender. All loans are subject to credit
+            {LOAN_LIMITS.minTerm} to {LOAN_LIMITS.maxTerm} months. Brook Loans
+            is a California-based direct lender. All loans are subject to credit
             profile and account verification.
           </p>
         </div>
@@ -228,10 +232,10 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-white/50">
-            &copy; {currentYear} {SITE_NAME}. All rights reserved. Creek
-            Lend is a California-based Direct Lender.
+            &copy; {currentYear} {SITE_NAME}. All rights reserved.Brook Loans is
+            a California-based Direct Lender.
           </p>
-          <p className="text-xs text-white/50">Creek Lend | Direct Lender</p>
+          <p className="text-xs text-white/50">Brook Loans | Direct Lender</p>
         </div>
       </div>
     </footer>

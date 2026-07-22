@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     "online loans",
     "fast personal loans",
     "low interest loans",
-    "Creek Lend",
+    "Brook Loans",
   ],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
@@ -75,7 +75,7 @@ export default function RootLayout({
       <head>
         <link
           rel="preconnect"
-          href="https://api.creeklend.com"
+          href="https://api.brookloans.com"
           crossOrigin="anonymous"
         />
         <link

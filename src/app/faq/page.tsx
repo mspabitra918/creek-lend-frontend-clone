@@ -7,7 +7,7 @@ import { SITE_NAME, LOAN_LIMITS } from "@/lib/constants";
 
 const faqs: { question: string; answer: ReactNode; plainAnswer: string }[] = [
   {
-    question: "What is Creek Lend?",
+    question: "What is Brook Loans?",
     plainAnswer: `${SITE_NAME} is a California-based direct personal loan provider. We are not a marketplace or broker—we fund loans directly from our headquarters. This means faster decisions and a streamlined process for borrowers across the United States.`,
     answer: (
       <>
@@ -96,7 +96,7 @@ const faqs: { question: string; answer: ReactNode; plainAnswer: string }[] = [
     ),
   },
   {
-    question: "What fees does Creek Lend charge?",
+    question: "What fees does Brook Loans charge?",
     plainAnswer:
       "We pride ourselves on transparency. There are no application fees, no annual fees, and no upfront costs. A standard origination fee applies, which is deducted from your loan proceeds at the time of funding.",
     answer: (

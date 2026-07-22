@@ -5,7 +5,7 @@ import ApplicationWizard from "@/components/forms/ApplicationWizard";
 export const metadata: Metadata = {
   title: "Apply for a Personal Loan",
   description:
-    "Apply for a personal loan from Creek Lend in minutes. Competitive rates, fast approval, and direct funding. Check your rate with no credit impact.",
+    "Apply for a personal loan from Brook Loans in minutes. Competitive rates, fast approval, and direct funding. Check your rate with no credit impact.",
   alternates: { canonical: "/apply" },
 };
 

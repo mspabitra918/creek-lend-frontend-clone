@@ -14,13 +14,17 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image
+            {/* <Image
               src="/logo-dark.png"
               alt={SITE_NAME}
               width={160}
               height={40}
               priority
-            />
+            /> */}
+            {/* <h1>Brook Loans</h1> */}
+            <span className=" font-extrabold tracking-tight text-[#1b4d3e] text-3xl">
+              Brook<span className="text-[#0f3329] font-normal"> Loans</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AdminAuthProvider } from "@/lib/admin-auth";
 
 export const metadata: Metadata = {
-  title: "Admin Portal | Creek Lend",
+  title: "Admin Portal | Brook Loans",
   robots: { index: false, follow: false },
 };
 

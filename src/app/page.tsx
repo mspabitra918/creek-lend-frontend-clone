@@ -31,7 +31,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/how-it-works"
-                  aria-label="Learn how Creek Lend personal loans work"
+                  aria-label="Learn how Brook Loans personal loans work"
                   className="border-2 border-white/30 hover:border-white/60 text-white px-8 py-4 rounded-lg font-semibold text-lg text-center transition-all duration-200"
                 >
                   Learn More
@@ -92,7 +92,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. Creek Lend Stats Bar */}
+      {/* 3. Brook Loans Stats Bar */}
       <section className="bg-surface py-8 border-b border-surface-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="sr-only">Key Statistics</h2>
@@ -121,7 +121,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. Why Choose Creek Lend? */}
+      {/* 4. Why Choose Brook Loans? */}
       <section className="py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">

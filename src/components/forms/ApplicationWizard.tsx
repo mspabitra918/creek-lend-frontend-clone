@@ -210,7 +210,7 @@ export default function ApplicationWizard() {
           Service Not Available
         </h2>
         <p className="text-text-secondary">
-          Creek Lend is currently available only in the United States. We
+          Brook Loans is currently available only in the United States. We
           apologize for the inconvenience.
         </p>
       </div>

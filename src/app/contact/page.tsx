@@ -11,7 +11,7 @@ import {
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Creek Lend. Reach our support team by email, phone, or visit our office. We're here to help with your personal loan questions.",
+    "Get in touch with Brook Loans. Reach our support team by email, phone, or visit our office. We're here to help with your personal loan questions.",
   alternates: { canonical: "/contact" },
 };
 

@@ -1,4 +1,10 @@
-import { SITE_NAME, SITE_URL, BUSINESS_EMAIL, BUSINESS_PHONE, BUSINESS_ADDRESS } from "@/lib/constants";
+import {
+  SITE_NAME,
+  SITE_URL,
+  BUSINESS_EMAIL,
+  BUSINESS_PHONE,
+  BUSINESS_ADDRESS,
+} from "@/lib/constants";
 
 export function FinancialServiceSchema() {
   const schema = {
@@ -7,10 +13,8 @@ export function FinancialServiceSchema() {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      "Creek Lend is a direct personal loan provider offering competitive rates for debt consolidation, home improvement, medical expenses, and more.",
-    areaServed: [
-      { "@type": "Country", name: "United States" },
-    ],
+      "Brook Loans is a direct personal loan provider offering competitive rates for debt consolidation, home improvement, medical expenses, and more.",
+    areaServed: [{ "@type": "Country", name: "United States" }],
     serviceType: "Personal Loans",
     provider: {
       "@type": "Organization",
@@ -37,7 +41,11 @@ export function FinancialServiceSchema() {
   );
 }
 
-export function FAQSchema({ faqs }: { faqs: { question: string; answer: string }[] }) {
+export function FAQSchema({
+  faqs,
+}: {
+  faqs: { question: string; answer: string }[];
+}) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -59,7 +67,11 @@ export function FAQSchema({ faqs }: { faqs: { question: string; answer: string }
   );
 }
 
-export function BreadcrumbSchema({ items }: { items: { name: string; url: string }[] }) {
+export function BreadcrumbSchema({
+  items,
+}: {
+  items: { name: string; url: string }[];
+}) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

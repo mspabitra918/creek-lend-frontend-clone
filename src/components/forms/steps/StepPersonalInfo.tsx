@@ -37,16 +37,21 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
         Start Your Secure Application
       </h2>
       <p className="text-sm text-text-secondary mb-2">
-        We use a &ldquo;soft pull&rdquo; to check your eligibility, which means zero impact on your credit score.
+        We use a &ldquo;soft pull&rdquo; to check your eligibility, which means
+        zero impact on your credit score.
       </p>
       <p className="text-xs text-blue-600 bg-blue-50 rounded-lg px-3 py-2 mb-6">
-        Creek Lend is a California-based direct lender serving all 50 US states.
+        Brook Loans is a California-based direct lender serving all 50 US
+        states.
       </p>
 
       <div className="space-y-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
-            <label htmlFor="firstName" className="block text-sm font-medium text-text-primary mb-1.5">
+            <label
+              htmlFor="firstName"
+              className="block text-sm font-medium text-text-primary mb-1.5"
+            >
               First Name *
             </label>
             <input
@@ -55,7 +60,9 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
               value={data.firstName}
               onChange={(e) => updateData({ firstName: e.target.value })}
               className={`w-full px-4 py-3 border rounded-lg transition-colors ${
-                errors.firstName ? "border-error" : "border-surface-dark focus:border-primary"
+                errors.firstName
+                  ? "border-error"
+                  : "border-surface-dark focus:border-primary"
               }`}
               placeholder="John"
             />
@@ -64,7 +71,10 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
             )}
           </div>
           <div>
-            <label htmlFor="lastName" className="block text-sm font-medium text-text-primary mb-1.5">
+            <label
+              htmlFor="lastName"
+              className="block text-sm font-medium text-text-primary mb-1.5"
+            >
               Last Name *
             </label>
             <input
@@ -73,7 +83,9 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
               value={data.lastName}
               onChange={(e) => updateData({ lastName: e.target.value })}
               className={`w-full px-4 py-3 border rounded-lg transition-colors ${
-                errors.lastName ? "border-error" : "border-surface-dark focus:border-primary"
+                errors.lastName
+                  ? "border-error"
+                  : "border-surface-dark focus:border-primary"
               }`}
               placeholder="Doe"
             />
@@ -84,7 +96,10 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-text-primary mb-1.5">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-text-primary mb-1.5"
+          >
             Email Address *
           </label>
           <input
@@ -93,7 +108,9 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
             value={data.email}
             onChange={(e) => updateData({ email: e.target.value })}
             className={`w-full px-4 py-3 border rounded-lg transition-colors ${
-              errors.email ? "border-error" : "border-surface-dark focus:border-primary"
+              errors.email
+                ? "border-error"
+                : "border-surface-dark focus:border-primary"
             }`}
             placeholder="john.doe@email.com"
           />
@@ -103,7 +120,10 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
         </div>
 
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-text-primary mb-1.5">
+          <label
+            htmlFor="phone"
+            className="block text-sm font-medium text-text-primary mb-1.5"
+          >
             Phone Number *
           </label>
           <input
@@ -123,7 +143,9 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
               updateData({ phone: formatted });
             }}
             className={`w-full px-4 py-3 border rounded-lg transition-colors ${
-              errors.phone ? "border-error" : "border-surface-dark focus:border-primary"
+              errors.phone
+                ? "border-error"
+                : "border-surface-dark focus:border-primary"
             }`}
             placeholder="(444) 444-4444"
           />
@@ -133,7 +155,10 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
         </div>
 
         <div>
-          <label htmlFor="dateOfBirth" className="block text-sm font-medium text-text-primary mb-1.5">
+          <label
+            htmlFor="dateOfBirth"
+            className="block text-sm font-medium text-text-primary mb-1.5"
+          >
             Date of Birth *
           </label>
           <input
@@ -153,7 +178,9 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
             placeholder="MM/DD/YYYY"
             maxLength={10}
             className={`w-full px-4 py-3 border rounded-lg transition-colors ${
-              errors.dateOfBirth ? "border-error" : "border-surface-dark focus:border-primary"
+              errors.dateOfBirth
+                ? "border-error"
+                : "border-surface-dark focus:border-primary"
             }`}
           />
           {errors.dateOfBirth && (
@@ -162,14 +189,20 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
         </div>
 
         <div>
-          <label htmlFor="assistedByLoanAgent" className="block text-sm font-medium text-text-primary mb-1.5">
-            Assisted By Loan Agent <span className="text-text-secondary font-normal">(Optional)</span>
+          <label
+            htmlFor="assistedByLoanAgent"
+            className="block text-sm font-medium text-text-primary mb-1.5"
+          >
+            Assisted By Loan Agent{" "}
+            <span className="text-text-secondary font-normal">(Optional)</span>
           </label>
           <input
             type="text"
             id="assistedByLoanAgent"
             value={data.assistedByLoanAgent}
-            onChange={(e) => updateData({ assistedByLoanAgent: e.target.value })}
+            onChange={(e) =>
+              updateData({ assistedByLoanAgent: e.target.value })
+            }
             className="w-full px-4 py-3 border border-surface-dark focus:border-primary rounded-lg transition-colors"
             placeholder="Enter loan agent's name if applicable"
           />
@@ -178,7 +211,17 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
 
       <div className="mt-8 flex items-center justify-end gap-3">
         <span className="flex items-center gap-1 text-xs text-text-secondary">
-          <svg className="w-3.5 h-3.5 text-success" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" /></svg>
+          <svg
+            className="w-3.5 h-3.5 text-success"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fillRule="evenodd"
+              d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+              clipRule="evenodd"
+            />
+          </svg>
           Your data is protected by bank-level security
         </span>
         <button
