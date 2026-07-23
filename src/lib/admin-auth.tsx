@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  type ReactNode,
+} from "react";
 import { apiUrl } from "./api";
 
 interface AdminUser {
@@ -94,6 +101,7 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
     setUser(data.user);
     setToken(data.token);
     localStorage.setItem("admin_token", data.token);
+    setLoading(false);
   };
 
   return (
@@ -115,7 +123,8 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
 
 export function useAdminAuth() {
   const ctx = useContext(AdminAuthContext);
-  if (!ctx) throw new Error("useAdminAuth must be used within AdminAuthProvider");
+  if (!ctx)
+    throw new Error("useAdminAuth must be used within AdminAuthProvider");
   return ctx;
 }
 
@@ -125,13 +134,15 @@ export function useAdminApi() {
 
   const adminFetch = useCallback(
     async (path: string, options: RequestInit = {}) => {
+      const headers = {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        ...(options.headers || {}),
+      } as Record<string, string>;
+
       const res = await fetch(apiUrl(path), {
         ...options,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-          ...options.headers,
-        },
+        headers,
       });
 
       if (res.status === 401) {

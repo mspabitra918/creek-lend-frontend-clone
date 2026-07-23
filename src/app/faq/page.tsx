@@ -1,173 +1,33 @@
-"use client";
-
-import { useState, type ReactNode } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { FAQSchema } from "@/components/ui/JsonLd";
-import { SITE_NAME, LOAN_LIMITS } from "@/lib/constants";
+import { FAQSchema, BreadcrumbSchema } from "@/components/ui/JsonLd";
+import { SITE_NAME } from "@/lib/constants";
+import { FAQS } from "./faq-data";
+import FAQAccordion from "./FAQAccordion";
 
-const faqs: { question: string; answer: ReactNode; plainAnswer: string }[] = [
-  {
-    question: "What is Brook Loans?",
-    plainAnswer: `${SITE_NAME} is a California-based direct personal loan provider. We are not a marketplace or broker—we fund loans directly from our headquarters. This means faster decisions and a streamlined process for borrowers across the United States.`,
-    answer: (
-      <>
-        {SITE_NAME} is a California-based direct personal loan provider. We are
-        not a marketplace or broker—we fund loans directly from our
-        headquarters. This means faster decisions and a streamlined process for
-        borrowers across the <strong>United States</strong>.
-      </>
-    ),
+export const metadata: Metadata = {
+  title: {
+    absolute: "Personal Loan Frequently Asked Questions | Brook Loans FAQ",
   },
-  {
-    question: "How much can I borrow?",
-    plainAnswer: `Personal loan amounts range from $${LOAN_LIMITS.minAmount.toLocaleString()} to $${LOAN_LIMITS.maxAmount.toLocaleString()}. The specific amount you qualify for is based on your income and other financial factors.`,
-    answer: (
-      <>
-        Personal loan amounts range from{" "}
-        <strong>
-          ${LOAN_LIMITS.minAmount.toLocaleString()} to $
-          {LOAN_LIMITS.maxAmount.toLocaleString()}
-        </strong>
-        . The specific amount you qualify for is based on your income and other
-        financial factors.
-      </>
-    ),
-  },
-  {
-    question: "What are the interest rates?",
-    plainAnswer: `We offer a fixed ${LOAN_LIMITS.minAPR}% APR for our personal loans. Unlike traditional lenders with fluctuating ranges, we provide one clear rate to simplify your borrowing experience.`,
-    answer: (
-      <>
-        We offer a <strong>fixed {LOAN_LIMITS.minAPR}% APR</strong> for our
-        personal loans. Unlike traditional lenders with fluctuating ranges, we
-        provide one clear rate to simplify your borrowing experience.
-      </>
-    ),
-  },
-  {
-    question: "How long do I have to repay my loan?",
-    plainAnswer: `We provide flexible repayment terms ranging from ${LOAN_LIMITS.minTerm} to ${LOAN_LIMITS.maxTerm} months. You can choose the term that best fits your monthly budget.`,
-    answer: (
-      <>
-        We provide flexible repayment terms ranging from{" "}
-        <strong>
-          {LOAN_LIMITS.minTerm} to {LOAN_LIMITS.maxTerm} months
-        </strong>
-        . You can choose the term that best fits your monthly budget.
-      </>
-    ),
-  },
-  {
-    question: "How fast can I get my funds?",
-    plainAnswer:
-      "Our team operates in Pacific Standard Time (PST). Most approved borrowers receive their funds as fast as the next business day after accepting their loan offer. Funds are deposited directly into your bank account via ACH transfer.",
-    answer: (
-      <>
-        Our team operates in <strong>Pacific Standard Time (PST)</strong>. Most
-        approved borrowers receive their funds as fast as the next business day
-        after accepting their loan offer. Funds are deposited directly into your
-        bank account via ACH transfer.
-      </>
-    ),
-  },
-  {
-    question: "Are there any prepayment penalties?",
-    plainAnswer:
-      "No. You can pay off your loan early at any time with zero prepayment penalties. We believe you should be rewarded for achieving financial freedom ahead of schedule.",
-    answer: (
-      <>
-        No. You can pay off your loan early at any time with{" "}
-        <strong>zero prepayment penalties</strong>. We believe you should be
-        rewarded for achieving financial freedom ahead of schedule.
-      </>
-    ),
-  },
-  {
-    question: "What are the eligibility requirements?",
-    plainAnswer:
-      "To qualify, you must be at least 18 years old, be a resident of the United States, have a valid government-issued ID, a verifiable source of income, and a bank account for direct deposit.",
-    answer: (
-      <>
-        To qualify, you must be at least 18 years old, be a{" "}
-        <strong>resident of the United States</strong>, have a valid
-        government-issued ID, a verifiable source of income, and a bank account
-        for direct deposit.
-      </>
-    ),
-  },
-  {
-    question: "What fees does Brook Loans charge?",
-    plainAnswer:
-      "We pride ourselves on transparency. There are no application fees, no annual fees, and no upfront costs. A standard origination fee applies, which is deducted from your loan proceeds at the time of funding.",
-    answer: (
-      <>
-        We pride ourselves on transparency. There are{" "}
-        <strong>
-          no application fees, no annual fees, and no upfront costs
-        </strong>
-        . A standard origination fee applies, which is deducted from your loan
-        proceeds at the time of funding.
-      </>
-    ),
-  },
-];
-
-function FAQItem({
-  question,
-  answer,
-  isOpen,
-  onToggle,
-}: {
-  question: string;
-  answer: ReactNode;
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
-  return (
-    <div className="border border-surface-dark rounded-xl overflow-hidden">
-      <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between px-6 py-5 text-left bg-white hover:bg-surface/50 transition-colors"
-        aria-expanded={isOpen}
-      >
-        <h3 className="text-lg font-semibold text-text-primary pr-4">
-          {question}
-        </h3>
-        <svg
-          className={`w-5 h-5 text-primary flex-shrink-0 transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
-      </button>
-      {isOpen && (
-        <div className="px-6 pb-5 bg-white">
-          <p className="text-text-secondary leading-relaxed">{answer}</p>
-        </div>
-      )}
-    </div>
-  );
-}
+  description:
+    "Have questions about Brook Loans? Find answers about our 10% APR, minimum and maximum loan amounts, credit score requirements, and 24-hour funding.",
+  alternates: { canonical: "/faq" },
+};
 
 export default function FAQPage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
   return (
     <>
       <FAQSchema
-        faqs={faqs.map(({ question, plainAnswer }) => ({
+        faqs={FAQS.map(({ question, plainAnswer }) => ({
           question,
           answer: plainAnswer,
         }))}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "FAQ", url: "/faq" },
+        ]}
       />
 
       {/* Hero */}
@@ -185,19 +45,7 @@ export default function FAQPage() {
       {/* FAQ Accordion */}
       <section className="py-16 sm:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <FAQItem
-                key={index}
-                question={faq.question}
-                answer={faq.answer}
-                isOpen={openIndex === index}
-                onToggle={() =>
-                  setOpenIndex(openIndex === index ? null : index)
-                }
-              />
-            ))}
-          </div>
+          <FAQAccordion />
         </div>
       </section>
 
@@ -236,7 +84,7 @@ export default function FAQPage() {
               />
             </svg>
             <span className="text-xs font-medium text-text-secondary">
-              Proudly Based in California
+              Serving All 50 U.S. States
             </span>
           </div>
           <div className="flex items-center justify-center gap-2 bg-surface rounded-lg py-3 px-4">
@@ -273,6 +121,7 @@ export default function FAQPage() {
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/apply"
+              prefetch={false}
               className="bg-secondary hover:bg-secondary-light text-primary-dark px-10 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl inline-block"
             >
               Apply Now

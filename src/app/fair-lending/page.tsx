@@ -35,13 +35,22 @@ export default function FairLendingPage() {
                 Equal Opportunity Lender
               </h2>
               <p>
-                {SITE_NAME} is an Brook Loans and is committed to fair lending
-                practices. We provide equal access to credit for all qualified
-                borrowers regardless of race, color, religion, national origin,
-                sex, marital status, age (provided the applicant has the
-                capacity to enter into a binding contract), familial status,
-                disability, or because all or part of the applicant&apos;s
-                income derives from any public assistance program.
+                {SITE_NAME} is strictly committed to the principles of fair
+                lending and equal access to credit. We do not discriminate
+                against any applicant on the basis of race, color, religion,
+                national origin, sex, marital status, age (provided the
+                applicant has the capacity to enter into a binding contract),
+                because all or part of the applicant&apos;s income derives from
+                any public assistance program, or because the applicant has in
+                good faith exercised any right under the Consumer Credit
+                Protection Act.
+              </p>
+              <p className="mt-4">
+                We evaluate all applications based solely on the
+                applicant&apos;s financial requirements and our established
+                underwriting criteria. Our commitment to accepting all credit
+                scores reflects our dedication to providing accessible capital
+                to every borrower in all 50 states.
               </p>
             </div>
 
@@ -60,17 +69,17 @@ export default function FairLendingPage() {
                   transaction.
                 </li>
                 <li>
-                  <strong>Fair Housing Act:</strong> Prohibits discrimination in
-                  residential real estate-related transactions.
+                  <strong>Consumer Credit Protection Act (CCPA):</strong>{" "}
+                  Protects borrowers who exercise their rights under federal
+                  consumer credit law.
                 </li>
                 <li>
-                  <strong>Community Reinvestment Act (CRA):</strong> Encourages
-                  financial institutions to meet the credit needs of all
-                  communities they serve.
+                  <strong>Fair Credit Reporting Act (FCRA):</strong> Governs how
+                  consumer credit information is collected, used, and shared.
                 </li>
                 <li>
-                  <strong>Home Mortgage Disclosure Act (HMDA):</strong> Requires
-                  collection and reporting of lending data.
+                  <strong>Truth in Lending Act (TILA):</strong> Requires clear,
+                  up-front disclosure of loan costs and terms.
                 </li>
               </ul>
             </div>
@@ -82,9 +91,10 @@ export default function FairLendingPage() {
               <ul className="list-disc pl-6 space-y-3">
                 <li>
                   <strong>Objective Criteria:</strong> All lending decisions are
-                  based on objective, credit-related factors including credit
-                  history, income, employment stability, and debt-to-income
-                  ratio.
+                  based on the applicant&apos;s financial requirements and our
+                  established underwriting criteria &mdash; never on protected
+                  characteristics. We accept applicants across all credit score
+                  ranges.
                 </li>
                 <li>
                   <strong>Consistent Application:</strong> We apply the same

@@ -1,6 +1,45 @@
 import Link from "next/link";
 import LoanCalculator from "@/components/ui/LoanCalculator";
-import { SITE_NAME } from "@/lib/constants";
+import { SITE_NAME, BUSINESS_PHONE, BUSINESS_PHONE_TEL } from "@/lib/constants";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  // `absolute` so the root layout's "%s | Brook Loans" template doesn't append
+  // a second brand suffix to a title that already carries one.
+  title: {
+    absolute:
+      "Personal Loans for All Credit Scores | Fixed 10% APR | Brook Loans",
+  },
+  description:
+    "Brook Loans offers personal loans from $2,000 to $10,000 with a fixed 10% APR. Available in all 50 U.S. states for all credit scores. Apply and get funded within 24 hours.",
+  keywords: [
+    "personal loans",
+    "personal loans all credit scores",
+    "fixed 10% APR loan",
+    "direct lender",
+    "debt consolidation loans",
+    "online loans",
+    "fast personal loans",
+    "Brook Loans",
+  ],
+  alternates: { canonical: "/" },
+};
+
+const AT_A_GLANCE = [
+  { feature: "Loan Amounts", offering: "$2,000 Minimum — $10,000 Maximum" },
+  { feature: "Interest Rate", offering: "10% Fixed APR Annually" },
+  { feature: "Credit Requirements", offering: "All Credit Scores Accepted" },
+  { feature: "Availability", offering: "All 50 U.S. States" },
+  { feature: "Funding Speed", offering: "Within 24 Hours of E-Signature" },
+];
+
+const LOAN_PURPOSE_USES = [
+  "Debt consolidation to simplify your monthly payments",
+  "Home improvement and critical repairs",
+  "Unexpected medical or dental expenses",
+  "Major life purchases and life events",
+  "Emergency financial safety nets",
+];
 
 export default function HomePage() {
   return (
@@ -11,15 +50,20 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                $2,000 to $10,000.
-                <span className="block text-secondary mt-2">
-                  Fixed 10% APR. Funded Tomorrow.
-                </span>
+                Fixed 10% APR Personal Loans for{" "}
+                <span className="text-secondary">All Credit Scores</span>
               </h1>
-              <p className="mt-6 text-lg sm:text-xl text-white/80 leading-relaxed max-w-lg">
-                No hidden fees or balloon payments. No upfront fees. No credit
-                score barriers. Experience the relief of a California-based
-                lender that speaks your language.
+              <p className="mt-4 text-xl sm:text-2xl text-white font-semibold">
+                Borrow $2,000 to $10,000 with transparent terms and nationwide
+                availability.
+              </p>
+              <p className="mt-6 text-lg text-white/80 leading-relaxed max-w-lg">
+                At {SITE_NAME}, we believe in straightforward financing. Whether
+                you are living on the East Coast, the West Coast, or anywhere in
+                between, we provide personal loans to residents in all 50 U.S.
+                states. With a single, fixed annual percentage rate (APR) and
+                acceptance for all credit profiles, getting the funds you need
+                has never been clearer.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <Link
@@ -27,15 +71,15 @@ export default function HomePage() {
                   prefetch={false}
                   className="bg-secondary hover:bg-secondary-light text-primary-dark px-8 py-4 rounded-lg font-bold text-lg text-center transition-all duration-200 shadow-lg hover:shadow-xl"
                 >
-                  Get Started
+                  Apply Now
                 </Link>
-                <Link
-                  href="/how-it-works"
-                  aria-label="Learn how Brook Loans personal loans work"
+                <a
+                  href={`tel:${BUSINESS_PHONE_TEL}`}
+                  aria-label={`Call ${SITE_NAME} today at ${BUSINESS_PHONE}`}
                   className="border-2 border-white/30 hover:border-white/60 text-white px-8 py-4 rounded-lg font-semibold text-lg text-center transition-all duration-200"
                 >
-                  Learn More
-                </Link>
+                  Call Us Today
+                </a>
               </div>
               {/* Trust Tags */}
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/70">
@@ -51,7 +95,7 @@ export default function HomePage() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>No Impact on Credit Score</span>
+                  <span>All Credit Scores Accepted</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
@@ -92,23 +136,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. Brook Loans Stats Bar */}
-      <section className="bg-surface py-8 border-b border-surface-dark">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="sr-only">Key Statistics</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {/* 3. Brook Loans at a Glance */}
+      <section className="bg-surface py-12 sm:py-16 border-b border-surface-dark">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-text-primary text-center">
+            {SITE_NAME} at a Glance
+          </h2>
+
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <p className="text-3xl font-bold text-primary">$10,000</p>
-              <h3 className="text-sm text-text-secondary mt-1">Max Loan</h3>
+              <p className="text-3xl font-bold text-primary">
+                $2,000&ndash;$10,000
+              </p>
+              <h3 className="text-sm text-text-secondary mt-1">Loan Amounts</h3>
             </div>
             <div>
               <p className="text-3xl font-bold text-primary">10%</p>
-              <h3 className="text-sm text-text-secondary mt-1">Fixed Rate</h3>
+              <h3 className="text-sm text-text-secondary mt-1">Fixed APR</h3>
             </div>
             <div>
-              <p className="text-3xl font-bold text-primary">24–60</p>
+              <p className="text-3xl font-bold text-primary">All</p>
               <h3 className="text-sm text-text-secondary mt-1">
-                Mos Flexible Terms
+                Credit Scores
               </h3>
             </div>
             <div>
@@ -116,6 +165,47 @@ export default function HomePage() {
               <h3 className="text-sm text-text-secondary mt-1">
                 Funding Speed
               </h3>
+            </div>
+          </div>
+
+          <div className="mt-10 bg-white rounded-xl shadow-md border border-surface-dark overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <caption className="sr-only">
+                  {SITE_NAME} loan features and offerings
+                </caption>
+                <thead className="bg-surface">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="text-left px-6 py-4 text-sm font-semibold text-text-primary"
+                    >
+                      Feature
+                    </th>
+                    <th
+                      scope="col"
+                      className="text-left px-6 py-4 text-sm font-semibold text-text-primary"
+                    >
+                      {SITE_NAME} Offering
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-surface-dark">
+                  {AT_A_GLANCE.map((row) => (
+                    <tr key={row.feature}>
+                      <th
+                        scope="row"
+                        className="text-left px-6 py-4 text-sm text-text-primary font-medium"
+                      >
+                        {row.feature}
+                      </th>
+                      <td className="px-6 py-4 text-sm text-text-secondary">
+                        {row.offering}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -129,9 +219,9 @@ export default function HomePage() {
               Why Choose {SITE_NAME}?
             </h2>
             <p className="mt-4 text-lg text-text-secondary">
-              We&apos;re a direct lender based in California, not a broker.
-              We&apos;ve redesigned the personal loan to be as clear as a
-              mountain stream.
+              We&apos;re a direct lender, not a broker. We&apos;ve redesigned
+              the personal loan to be as clear as a mountain stream &mdash; one
+              fixed rate, every credit profile, all 50 states.
             </p>
           </div>
 
@@ -153,9 +243,9 @@ export default function HomePage() {
                     />
                   </svg>
                 ),
-                title: "Radical Clarity",
+                title: "Radical Transparency",
                 description:
-                  "Transparent Rates: Borrow $2,000, pay back just $92.29 per month. No hidden fees or balloon payments.",
+                  "No hidden fees, no variable rates. Every borrower receives the exact same fixed 10% APR, with $0 origination fee and no prepayment penalty.",
               },
               {
                 icon: (
@@ -175,7 +265,7 @@ export default function HomePage() {
                 ),
                 title: "Fast Funding",
                 description:
-                  "Our team operates in PST. Finalize your application by 2 PM PST and your funds are dispatched within one business day.",
+                  "Once you complete phone underwriting and e-sign your agreement, your funds are disbursed within 24 hours.",
               },
               {
                 icon: (
@@ -193,9 +283,9 @@ export default function HomePage() {
                     />
                   </svg>
                 ),
-                title: "Secure & Private",
+                title: "Universal Acceptance",
                 description:
-                  "Bank-level encryption. We are a US-focused lender committed to PST-speed support and nationwide inclusion.",
+                  "Your financial future is more than a three-digit number. We accept applicants across all credit score ranges, in all 50 U.S. states.",
               },
             ].map((feature) => (
               <div
@@ -220,15 +310,39 @@ export default function HomePage() {
       {/* 5. Personal Loans for Every Need */}
       <section className="bg-surface py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-text-primary">
-              Personal Loans for Every Need
+              Personal Financing for Every Purpose
             </h2>
             <p className="mt-4 text-lg text-text-secondary">
-              Whether you&apos;re consolidating debt or funding a major
-              purchase, we have a loan solution for you.
+              {SITE_NAME} provides flexible capital tailored to your specific
+              situation. Because we accept all credit score ranges, you can
+              secure funding without the typical barriers. You can use your{" "}
+              {SITE_NAME} personal loan for any purpose, including:
             </p>
           </div>
+
+          <ul className="max-w-2xl mx-auto mb-16 space-y-3">
+            {LOAN_PURPOSE_USES.map((use) => (
+              <li
+                key={use}
+                className="flex items-start gap-3 text-text-secondary"
+              >
+                <svg
+                  className="w-5 h-5 text-success flex-shrink-0 mt-0.5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span>{use}</span>
+              </li>
+            ))}
+          </ul>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -236,37 +350,37 @@ export default function HomePage() {
                 title: "Debt Consolidation",
                 description:
                   "Combine multiple debts into one manageable monthly payment with a fixed rate.",
-                href: "/apply?purpose=debt-consolidation&term=60",
+                href: "/apply",
               },
               {
                 title: "Home Improvement",
                 description:
                   "Finance renovations and upgrades to increase your home's value and comfort.",
-                href: "/apply?purpose=home-improvement&term=60",
+                href: "/apply",
               },
               {
                 title: "Medical Expenses",
                 description:
                   "Cover unexpected medical bills or planned procedures without financial stress.",
-                href: "/apply?purpose=medical&term=60",
+                href: "/apply",
               },
               {
                 title: "Auto Repairs",
                 description:
                   "Fund auto repairs or maintenance to keep you on the road without breaking the bank.",
-                href: "/apply?purpose=auto&term=60",
+                href: "/apply",
               },
               {
                 title: "Business",
                 description:
                   "Invest in your business growth with flexible personal financing options.",
-                href: "/apply?purpose=business&term=60",
+                href: "/apply",
               },
               {
                 title: "Education",
                 description:
                   "Pursue your educational goals with affordable personal loan financing.",
-                href: "/apply?purpose=education&term=60",
+                href: "/apply",
               },
             ].map((purpose) => (
               <Link
@@ -316,21 +430,20 @@ export default function HomePage() {
             {[
               {
                 step: "1",
-                title: "Check Your Rate",
+                title: "Apply Online",
                 description:
-                  "Fill out our simple online form in under 5 minutes. Checking your rate won't affect your credit score.",
+                  "Fill out our secure, basic online application form to establish your profile and requested loan amount. Takes about 5 minutes.",
               },
               {
                 step: "2",
-                title: "Verify Your Account",
-                description:
-                  "Receive a personalized loan offer with clear terms, your interest rate, and monthly payment details.",
+                title: "Call for Underwriting",
+                description: `Call our team at ${BUSINESS_PHONE}. We will transfer you to underwriting to review your terms and e-sign your agreement.`,
               },
               {
                 step: "3",
-                title: "Get Your Funds",
+                title: "Receive Your Funds",
                 description:
-                  "Accept your offer and receive funds directly to your bank account as fast as the next business day.",
+                  "Your call is transferred to funding for final processing. Funds are sent to your account within 24 hours.",
               },
             ].map((item) => (
               <div key={item.step} className="text-center">
@@ -403,7 +516,7 @@ export default function HomePage() {
                     d="M3 21V7l9-4 9 4v14l-9-4-9 4z"
                   />
                 </svg>
-                <span>California Direct Lender</span>
+                <span>Nationwide Direct Lender</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <svg
@@ -417,7 +530,7 @@ export default function HomePage() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span>No Hard Credit Pull</span>
+                <span>All Credit Scores Accepted</span>
               </div>
             </div>
           </div>
@@ -431,16 +544,23 @@ export default function HomePage() {
             Ready to Get Started?
           </h2>
           <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">
-            Join thousands of satisfied borrowers who chose {SITE_NAME} for
-            their personal loan needs. Apply now and see your rate in minutes.
+            Apply online in minutes, then call {BUSINESS_PHONE} to complete
+            underwriting and e-sign your agreement.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/apply"
               className="bg-secondary hover:bg-secondary-light text-primary-dark px-10 py-4 rounded-lg font-bold text-lg transition-all duration-200 shadow-lg hover:shadow-xl inline-block"
             >
-              Get Started Now — No Credit Impact
+              Apply Now
             </Link>
+            <a
+              href={`tel:${BUSINESS_PHONE_TEL}`}
+              aria-label={`Call ${SITE_NAME} at ${BUSINESS_PHONE}`}
+              className="border-2 border-white/30 hover:border-white/60 text-white px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-block"
+            >
+              Call {BUSINESS_PHONE}
+            </a>
           </div>
         </div>
       </section>

@@ -5,13 +5,18 @@ import {
   SITE_NAME,
   BUSINESS_EMAIL,
   BUSINESS_PHONE,
+  BUSINESS_PHONE_TEL,
   BUSINESS_ADDRESS,
+  BUSINESS_HOURS,
+  BUSINESS_HOURS_LINE,
 } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: {
+    absolute: "Contact Brook Loans | Customer Support & Underwriting",
+  },
   description:
-    "Get in touch with Brook Loans. Reach our support team by email, phone, or visit our office. We're here to help with your personal loan questions.",
+    "Get in touch with Brook Loans. Call us to complete your underwriting process, or reach out via email or mail. View our business hours and full contact details.",
   alternates: { canonical: "/contact" },
 };
 
@@ -28,10 +33,13 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-primary to-primary-dark text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold">Contact Us</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold">
+            We Are Here to Help
+          </h1>
           <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">
-            Have questions about your loan or our services? We&apos;re here to
-            help.
+            Whether you are calling to complete your loan underwriting or just
+            have a question about our fixed 10% APR loans, our team is ready to
+            assist you.
           </p>
         </div>
       </section>
@@ -91,9 +99,17 @@ export default function ContactPage() {
               <h3 className="text-lg font-bold text-text-primary mb-2">
                 Phone
               </h3>
-              <p className="text-primary font-medium">{BUSINESS_PHONE}</p>
+              <a
+                href={`tel:${BUSINESS_PHONE_TEL}`}
+                className="text-primary font-medium hover:text-primary-light transition-colors"
+              >
+                {BUSINESS_PHONE}
+              </a>
               <p className="text-sm text-text-secondary mt-2">
-                Mon&ndash;Fri: 8 AM &ndash; 5 PM PST
+                {BUSINESS_HOURS_LINE}
+              </p>
+              <p className="text-xs text-primary font-medium mt-2">
+                Call this number to complete Step 2 of your loan application
               </p>
             </div>
 
@@ -130,7 +146,7 @@ export default function ContactPage() {
                 {BUSINESS_ADDRESS.zip}
               </p>
               <p className="text-xs text-primary font-medium mt-2">
-                California-Based Support
+                Corporate Address
               </p>
             </div>
           </div>
@@ -150,9 +166,12 @@ export default function ContactPage() {
             </h3>
             <div className="space-y-3 text-sm">
               {[
-                { day: "Monday - Friday", hours: "8:00 AM - 5:00 PM PST" },
-                { day: "Saturday", hours: "Closed" },
-                { day: "Sunday", hours: "Closed" },
+                {
+                  day: "Monday - Friday",
+                  hours: BUSINESS_HOURS.monday_friday,
+                },
+                { day: "Saturday", hours: BUSINESS_HOURS.saturday },
+                { day: "Sunday", hours: BUSINESS_HOURS.sunday },
               ].map((schedule) => (
                 <div
                   key={schedule.day}

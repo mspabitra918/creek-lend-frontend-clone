@@ -6,19 +6,27 @@ export const BUSINESS_EMAIL = "support@brookloans.com";
 
 export const BUSINESS_PHONE = "(747) 208-0334";
 
+/** E.164 form of BUSINESS_PHONE, for use in `tel:` hrefs. */
+export const BUSINESS_PHONE_TEL = "+17472080334";
+
 export const BUSINESS_ADDRESS = {
-  street: "355 S Grand Ave, Office #2 W",
+  street: "5101 Santa Monica Blvd Ste 8",
   city: "Los Angeles",
   state: "CA",
-  zip: "90071",
+  zip: "90029",
   country: "US",
 };
 
+export const BUSINESS_ADDRESS_LINE = `${BUSINESS_ADDRESS.street}, ${BUSINESS_ADDRESS.city}, ${BUSINESS_ADDRESS.state} ${BUSINESS_ADDRESS.zip}`;
+
 export const BUSINESS_HOURS = {
-  monday_friday: "8 AM - 5 PM PST",
+  monday_friday: "06:00 AM - 04:00 PM PST",
   saturday: "Closed",
   sunday: "Closed",
 };
+
+/** Single-line business hours string used across header, footer, and contact pages. */
+export const BUSINESS_HOURS_LINE = `Monday - Friday: ${BUSINESS_HOURS.monday_friday}`;
 
 export const BUSINESS_TOLL_FREE = "(747) 208-0334";
 
@@ -130,6 +138,7 @@ export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/rates-and-fees", label: "Rates & Fees" },
+  { href: "/about", label: "About Us" },
   { href: "/faq", label: "FAQ" },
   { href: "/loan-status", label: "Loan Status" },
   { href: "/contact", label: "Contact" },
@@ -140,4 +149,10 @@ export const LEGAL_LINKS = [
   { href: "/terms-of-service", label: "Terms of Service" },
   { href: "/fair-lending", label: "Fair Lending Statement" },
   { href: "/direct-lender-disclosure", label: "Direct Lender Disclosure" },
+  { href: "/state-licenses", label: "State Licenses & Disclosures" },
+  { href: "/e-sign-consent", label: "E-Sign Consent" },
+  { href: "/glba-privacy-notice", label: "Financial Privacy Notice (GLBA)" },
+  { href: "/patriot-act-notice", label: "USA PATRIOT Act Notice" },
+  { href: "/sms-terms", label: "SMS Terms (TCPA)" },
+  { href: "/site-map", label: "Sitemap" },
 ];

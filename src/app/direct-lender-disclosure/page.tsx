@@ -93,14 +93,16 @@ export default function DirectLenderDisclosurePage() {
                   {LOAN_LIMITS.maxAmount.toLocaleString()}
                 </li>
                 <li>
-                  APR range: {LOAN_LIMITS.minAPR}% to {LOAN_LIMITS.maxAPR}%
+                  APR: Fixed {LOAN_LIMITS.minAPR.toFixed(2)}% for every borrower
                 </li>
                 <li>
                   Repayment terms: {LOAN_LIMITS.minTerm} to{" "}
                   {LOAN_LIMITS.maxTerm} months
                 </li>
                 <li>Loan type: Fixed-rate unsecured personal loans</li>
-                <li>Origination fee: 1% to 6% of loan amount</li>
+                <li>Credit requirements: All credit scores accepted</li>
+                <li>Availability: All 50 U.S. states</li>
+                <li>Origination fee: $0.00</li>
                 <li>No prepayment penalties</li>
               </ul>
             </div>

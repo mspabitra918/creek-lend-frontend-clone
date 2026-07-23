@@ -4,6 +4,9 @@ import {
   SITE_NAME,
   BUSINESS_EMAIL,
   BUSINESS_PHONE,
+  BUSINESS_PHONE_TEL,
+  BUSINESS_ADDRESS_LINE,
+  BUSINESS_HOURS_LINE,
   NAV_LINKS,
   LEGAL_LINKS,
   LOAN_LIMITS,
@@ -31,9 +34,10 @@ export default function Footer() {
             </div>
 
             <p className="text-white/70 text-sm leading-relaxed">
-              Brook Loans is a direct lender providing personal loans to
-              borrowers across the United States. We are committed to
-              transparent lending practices and PST-speed service.
+              {SITE_NAME} is a direct lender providing personal loans to
+              borrowers in all 50 U.S. states, regardless of credit score. We
+              are committed to transparent lending practices and a single fixed
+              rate for every borrower.
             </p>
           </div>
 
@@ -119,7 +123,12 @@ export default function Footer() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span>{BUSINESS_PHONE}</span>
+                <a
+                  href={`tel:${BUSINESS_PHONE_TEL}`}
+                  className="hover:text-secondary transition-colors"
+                >
+                  {BUSINESS_PHONE}
+                </a>
               </li>
               <li className="flex items-start space-x-2">
                 <svg
@@ -135,7 +144,7 @@ export default function Footer() {
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span>Mon&ndash;Fri: 8 AM &ndash; 5 PM PST</span>
+                <span>{BUSINESS_HOURS_LINE}</span>
               </li>
               <li className="flex items-start space-x-2">
                 <svg
@@ -157,7 +166,9 @@ export default function Footer() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>Los Angeles, California</span>
+                <address className="not-italic">
+                  {BUSINESS_ADDRESS_LINE}
+                </address>
               </li>
             </ul>
           </div>
@@ -166,12 +177,17 @@ export default function Footer() {
         {/* APR Disclosure */}
         <div className="mt-8 pt-8 border-t border-white/10">
           <p className="text-xs text-white/50 leading-relaxed">
-            Brook Loans offers a fixed 10% APR on all personal loans. Loan
-            amounts range from ${LOAN_LIMITS.minAmount.toLocaleString()} to $
+            {SITE_NAME} offers a fixed {LOAN_LIMITS.minAPR.toFixed(2)}% APR on
+            all personal loans. Loan amounts range from $
+            {LOAN_LIMITS.minAmount.toLocaleString()} to $
             {LOAN_LIMITS.maxAmount.toLocaleString()} with terms from{" "}
-            {LOAN_LIMITS.minTerm} to {LOAN_LIMITS.maxTerm} months. Brook Loans
-            is a California-based direct lender. All loans are subject to credit
-            profile and account verification.
+            {LOAN_LIMITS.minTerm} to {LOAN_LIMITS.maxTerm} months. Origination
+            fee: $0.00. Prepayment penalty: none. Representative example: a
+            $5,000 loan over 36 months at a fixed 10.00% APR has a monthly
+            payment of $161.34 and a total repayment of $5,808.09. {SITE_NAME}{" "}
+            is a direct lender serving all 50 U.S. states. All loans are subject
+            to completion of our application and phone-based underwriting
+            process.
           </p>
         </div>
 
@@ -232,10 +248,11 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-white/50">
-            &copy; {currentYear} {SITE_NAME}. All rights reserved.Brook Loans is
-            a California-based Direct Lender.
+            &copy; {currentYear} {SITE_NAME}. All rights reserved.
           </p>
-          <p className="text-xs text-white/50">Brook Loans | Direct Lender</p>
+          <p className="text-xs text-white/50">
+            {SITE_NAME} | Nationwide Direct Lender
+          </p>
         </div>
       </div>
     </footer>

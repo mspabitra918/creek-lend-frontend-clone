@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { BreadcrumbSchema } from "@/components/ui/JsonLd";
-import { SITE_NAME, BUSINESS_EMAIL, SITE_URL } from "@/lib/constants";
+import {
+  SITE_NAME,
+  BUSINESS_EMAIL,
+  SITE_URL,
+  LOAN_LIMITS,
+} from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -59,9 +64,12 @@ export default function TermsOfServicePage() {
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold text-text-primary mb-4">4. Loan Terms and Conditions</h2>
+              <h2 className="text-2xl font-bold text-text-primary mb-4">4. Loan Agreements</h2>
               <p>
-                If your loan application is approved, you will receive a separate Loan Agreement detailing the specific terms including the principal amount, APR, monthly payment, origination fee, repayment schedule, and other material terms. The Loan Agreement will govern the terms of your loan and must be reviewed and signed before funding.
+                Completing an online application does not guarantee loan approval. A legally binding loan agreement is only formed once you have completed the phone underwriting process and provided an e-signature.
+              </p>
+              <p className="mt-3">
+                If your application is approved, you will receive a separate Loan Agreement detailing the specific terms including the principal amount, the fixed {LOAN_LIMITS.minAPR.toFixed(2)}% APR, monthly payment, repayment schedule, and other material terms. {SITE_NAME} does not charge an origination fee, and there is no prepayment penalty.
               </p>
             </div>
 
@@ -73,8 +81,11 @@ export default function TermsOfServicePage() {
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold text-text-primary mb-4">6. Intellectual Property</h2>
+              <h2 className="text-2xl font-bold text-text-primary mb-4">6. Use License &amp; Intellectual Property</h2>
               <p>
+                Permission is granted to temporarily access the materials on the {SITE_NAME} website for personal, non-commercial use only.
+              </p>
+              <p className="mt-3">
                 The Service and its original content, features, and functionality are owned by {SITE_NAME} and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws. You may not reproduce, distribute, modify, or create derivative works from any content on this website without prior written consent.
               </p>
             </div>

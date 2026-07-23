@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BreadcrumbSchema } from "@/components/ui/JsonLd";
-import { SITE_NAME } from "@/lib/constants";
+import { SITE_NAME, LOAN_LIMITS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Rates & Fees — Transparent Personal Loan Pricing",
-  description:
-    "View Brook Loans's transparent personal loan rates and fees. One-time 10% flat fee with no hidden charges. $0 upfront fees on all loans.",
+  title: "Rates, Fees & Repayment Terms (TILA Disclosures)",
+  description: `${SITE_NAME} personal loan disclosures under the Truth in Lending Act: $2,000–$10,000 loan amounts, a fixed 10.00% APR, $0 origination fee, and no prepayment penalty.`,
   alternates: { canonical: "/rates-and-fees" },
 };
 
@@ -23,10 +22,13 @@ export default function RatesAndFeesPage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-primary to-primary-dark text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold">Rates & Fees</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold">
+            Transparent Lending Disclosures
+          </h1>
           <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">
-            Transparent pricing is at the core of {SITE_NAME}. No hidden fees,
-            no surprises — just honest lending.
+            In accordance with the Truth in Lending Act (TILA), {SITE_NAME}
+            provides full transparency regarding the costs associated with your
+            personal loan.
           </p>
         </div>
       </section>
@@ -49,9 +51,68 @@ export default function RatesAndFeesPage() {
             </div>
           </div>
 
+          {/* TILA Key Terms */}
+          <h2 className="text-2xl font-bold text-text-primary mb-6">
+            Key Loan Terms
+          </h2>
+          <div className="bg-white rounded-xl shadow-md border border-surface-dark overflow-hidden mb-12">
+            <table className="w-full">
+              <caption className="sr-only">
+                Truth in Lending Act key loan terms
+              </caption>
+              <tbody className="divide-y divide-surface-dark">
+                {[
+                  {
+                    term: "Minimum Loan Amount",
+                    value: `$${LOAN_LIMITS.minAmount.toLocaleString()}`,
+                  },
+                  {
+                    term: "Maximum Loan Amount",
+                    value: `$${LOAN_LIMITS.maxAmount.toLocaleString()}`,
+                  },
+                  {
+                    term: "Annual Percentage Rate (APR)",
+                    value: `${LOAN_LIMITS.minAPR.toFixed(2)}% Fixed`,
+                  },
+                  {
+                    term: "Repayment Terms",
+                    value: `${LOAN_LIMITS.minTerm} to ${LOAN_LIMITS.maxTerm} months`,
+                  },
+                ].map((row) => (
+                  <tr key={row.term}>
+                    <th
+                      scope="row"
+                      className="text-left px-6 py-4 text-sm text-text-primary font-medium"
+                    >
+                      {row.term}
+                    </th>
+                    <td className="px-6 py-4 text-sm text-text-secondary">
+                      {row.value}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Representative Example */}
+          <h2 className="text-2xl font-bold text-text-primary mb-4">
+            Representative Example
+          </h2>
+          <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 mb-12">
+            <p className="text-text-primary leading-relaxed">
+              If you borrow <strong>$5,000</strong> over a{" "}
+              <strong>36-month term</strong> at a fixed{" "}
+              <strong>10.00% APR</strong>, your monthly payment will be{" "}
+              <strong>$161.34</strong>. The total amount repaid over the life of
+              the loan, including principal and interest, will be{" "}
+              <strong>$5,808.09</strong>.
+            </p>
+          </div>
+
           {/* Fee Schedule */}
           <h2 className="text-2xl font-bold text-text-primary mb-6">
-            Fee Schedule — No Hidden Costs
+            Fees and Penalties
           </h2>
           <div className="bg-white rounded-xl shadow-md border border-surface-dark overflow-hidden mb-12">
             <table className="w-full">
@@ -67,20 +128,13 @@ export default function RatesAndFeesPage() {
               </thead>
               <tbody className="divide-y divide-surface-dark">
                 {[
-                  { fee: "Origination Fee", amount: "$0 (None)" },
-                  { fee: "Upfront Processing Fee", amount: "$0 (None)" },
+                  { fee: "Origination Fee", amount: "$0.00" },
+                  { fee: "Prepayment Penalty", amount: "None" },
+                  { fee: "Application Fee", amount: "$0.00" },
+                  { fee: "Upfront Processing Fee", amount: "$0.00" },
                   {
                     fee: "Late Payment Fee",
-                    amount: "$15 (After 5-day grace period)",
-                  },
-                  {
-                    fee: "Prepayment Penalty",
-                    amount: "None (Pay off early to save)",
-                  },
-                  { fee: "Application Fee", amount: "$0" },
-                  {
-                    fee: "Repayment Options",
-                    amount: "Fixed 24 to 60 Month Terms",
+                    amount: "$15 (after 5-day grace period)",
                   },
                 ].map((item) => (
                   <tr key={item.fee}>

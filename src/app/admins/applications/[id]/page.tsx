@@ -285,7 +285,7 @@ export default function ApplicationDetailPage() {
   console.log(bankVerification);
 
   useEffect(() => {
-    if (!loading && !user) router.replace("/admin/login");
+    if (!loading && !user) router.replace("/admins");
   }, [loading, user, router]);
 
   useEffect(() => {
@@ -460,7 +460,7 @@ export default function ApplicationDetailPage() {
         const data = await res.json();
         throw new Error(data.error);
       }
-      router.push("/admin/applications");
+      router.push("/admins/applications");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Delete failed");
       setDeleteConfirm(false);
@@ -481,18 +481,21 @@ export default function ApplicationDetailPage() {
         {/* Top Nav */}
         <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
           <div className="flex items-center gap-6">
-            <Link href="/admin" className="text-xl font-bold text-primary">
+            <Link
+              href="/admins/dashboard"
+              className="text-xl font-bold text-primary"
+            >
               Brook Loans
             </Link>
             <div className="hidden sm:flex items-center gap-4 text-sm">
               <Link
-                href="/admin"
+                href="/admins/dashboard"
                 className="text-gray-600 hover:text-primary transition"
               >
                 Dashboard
               </Link>
               <Link
-                href="/admin/applications"
+                href="/admins/applications"
                 className="text-primary font-medium"
               >
                 Applications
@@ -832,18 +835,21 @@ export default function ApplicationDetailPage() {
       {/* Top Nav */}
       <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-6">
-          <Link href="/admin" className="text-xl font-bold text-primary">
+          <Link
+            href="/admins/dashboard"
+            className="text-xl font-bold text-primary"
+          >
             Brook Loans
           </Link>
           <div className="hidden sm:flex items-center gap-4 text-sm">
             <Link
-              href="/admin"
+              href="/admins/dashboard"
               className="text-gray-600 hover:text-primary transition"
             >
               Dashboard
             </Link>
             <Link
-              href="/admin/applications"
+              href="/admins/applications"
               className="text-primary font-medium"
             >
               Applications
