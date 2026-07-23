@@ -20,13 +20,13 @@ export const BUSINESS_ADDRESS = {
 export const BUSINESS_ADDRESS_LINE = `${BUSINESS_ADDRESS.street}, ${BUSINESS_ADDRESS.city}, ${BUSINESS_ADDRESS.state} ${BUSINESS_ADDRESS.zip}`;
 
 export const BUSINESS_HOURS = {
-  monday_friday: "06:00 AM - 04:00 PM PST",
+  monday_friday: "06 AM - 4 PM PST",
   saturday: "Closed",
   sunday: "Closed",
 };
 
 /** Single-line business hours string used across header, footer, and contact pages. */
-export const BUSINESS_HOURS_LINE = `Monday - Friday: ${BUSINESS_HOURS.monday_friday}`;
+export const BUSINESS_HOURS_LINE = `Mon - Fri: ${BUSINESS_HOURS.monday_friday}`;
 
 export const BUSINESS_TOLL_FREE = "(747) 208-0334";
 
