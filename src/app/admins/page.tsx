@@ -48,13 +48,16 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-lg p-8">
           <div className="text-center mb-8">
-            <Image
+            {/* <Image
               src="/logo-dark.png"
               alt="Brook Loans"
               width={180}
               height={45}
               className="mx-auto"
-            />
+            /> */}
+            <span className=" font-extrabold tracking-tight text-[#1b4d3e] text-3xl">
+              Brook<span className="text-[#0f3329] font-normal"> Loans</span>
+            </span>
             <p className="text-text-secondary mt-3">Admin Portal</p>
           </div>
 

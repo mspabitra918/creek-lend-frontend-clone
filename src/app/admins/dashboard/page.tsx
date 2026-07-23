@@ -150,13 +150,16 @@ export default function AdminDashboard() {
             href="/admins/dashboard"
             className="text-xl font-bold text-primary"
           >
-            <Image
+            {/* <Image
               src="/logo-dark.png"
               alt={SITE_NAME}
               width={160}
               height={40}
               priority
-            />
+            /> */}
+            <span className=" font-extrabold tracking-tight text-[#1b4d3e] text-3xl">
+              Brook<span className="text-[#0f3329] font-normal"> Loans</span>
+            </span>
           </Link>
           <div className="hidden sm:flex items-center gap-4 text-sm">
             <Link href="/admins/dashboard" className="text-primary font-medium">
