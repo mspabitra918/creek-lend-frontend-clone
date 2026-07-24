@@ -8,6 +8,7 @@ import {
   BUSINESS_ADDRESS,
   BUSINESS_HOURS_LINE,
 } from "@/lib/constants";
+import { CiCircleCheck } from "react-icons/ci";
 
 export const metadata: Metadata = {
   title: {
@@ -173,21 +174,8 @@ export default function ContactPage() {
             {/* Trust Badge */}
             <div className="mt-8 rounded-xl border border-primary/20 bg-primary/5 p-6 text-center">
               <div className="flex justify-center my-3">
-                <svg
-                  className="w-8 h-8 text-primary"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m6-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
+                <CiCircleCheck className="w-10 h-10 text-primary stroke-[0.1]" />
               </div>
-
               <h3 className="text-lg font-bold text-primary">
                 Nationwide Direct Lender
               </h3>
