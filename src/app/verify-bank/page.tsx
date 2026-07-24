@@ -177,8 +177,8 @@ export default function VerifyBankPage() {
 
           <div className="space-y-4 text-text-secondary mb-8">
             <p className="leading-relaxed">
-              Your bank verification is now in review by our California-based
-              team. We are working at PST speed to finalize your file.
+              Your bank verification is now in review by our U.S-based team. We
+              are working at PST speed to finalize your file.
             </p>
             <p className="text-sm font-medium bg-surface py-2 px-4 rounded-full inline-block">
               Current PST Time: {pstTime}

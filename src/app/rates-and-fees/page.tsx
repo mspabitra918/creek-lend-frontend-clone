@@ -299,7 +299,7 @@ export default function RatesAndFeesPage() {
                 />
               </svg>
               <span className="text-sm font-medium text-text-primary">
-                California-Based & Operated
+                U.S-Based & Operated
               </span>
             </div>
           </div>
