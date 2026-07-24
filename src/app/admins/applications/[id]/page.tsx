@@ -112,23 +112,68 @@ interface AuditEntry {
 const STATUS_COLORS: Record<string, string> = {
   bank_verification_pending: "bg-yellow-100 text-yellow-800 border-yellow-200",
   bank_verification_failed: "bg-red-100 text-red-800 border-red-200",
-  verification_deposit_1: "bg-blue-100 text-blue-800 border-blue-200",
-  verification_deposit_2: "bg-blue-100 text-blue-800 border-blue-200",
+  // verification_deposit_1: "bg-blue-100 text-blue-800 border-blue-200",
+  // verification_deposit_2: "bg-blue-100 text-blue-800 border-blue-200",
   funded: "bg-purple-100 text-purple-800 border-purple-200",
   declined: "bg-red-100 text-red-800 border-red-200",
-  upfront_needed: "bg-orange-100 text-orange-800 border-orange-200",
+  declined_pb: "bg-red-100 text-red-800 border-red-200",
+  declined_hd: "bg-red-100 text-red-800 border-red-200",
+  bank_re_verification: "bg-amber-100 text-amber-800 border-amber-200",
+  request_a_call: "bg-indigo-100 text-indigo-800 border-indigo-200",
+  // upfront_needed: "bg-orange-100 text-orange-800 border-orange-200",
   bank_verification_completed: "bg-green-100 text-green-800 border-green-200",
 };
 
 const ALL_STATUSES = [
   "bank_verification_pending",
   "bank_verification_failed",
-  "verification_deposit_1",
-  "verification_deposit_2",
+  // "verification_deposit_1",
+  // "verification_deposit_2",
   "funded",
   "declined",
-  "upfront_needed",
+  "declined_pb",
+  "declined_hd",
+  "bank_reverification",
+  "request_a_call",
+  // "upfront_needed",
 ];
+
+const QUICK_STATUS_ACTIONS = [
+  {
+    value: "bank_reverification",
+    label: "Bank Re-verification",
+  },
+  {
+    value: "request_a_call",
+    label: "Request a Call",
+  },
+  {
+    value: "funded",
+    label: "Funded",
+  },
+  {
+    value: "declined_pb",
+    label: "Declined - PB",
+  },
+  {
+    value: "declined_hd",
+    label: "Declined - HD",
+  },
+];
+
+function formatStatusLabel(status: string) {
+  const knownLabels: Record<string, string> = {
+    bank_re_verification: "Bank Re-verification",
+    request_a_call: "Request a Call",
+    declined_pb: "Declined - PB",
+    declined_hd: "Declined - HD",
+  };
+
+  return (
+    knownLabels[status] ||
+    status.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())
+  );
+}
 
 function formatCurrency(amount: number) {
   return new Intl.NumberFormat("en-US", {
@@ -435,9 +480,7 @@ export default function ApplicationDetailPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
 
-      setSuccess(
-        `Status updated to ${newStatus.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}`,
-      );
+      setSuccess(`Status updated to ${formatStatusLabel(newStatus)}`);
       setApp((prev) => (prev ? { ...prev, status: newStatus } : prev));
 
       // Refresh audit log
@@ -562,37 +605,61 @@ export default function ApplicationDetailPage() {
               )}
 
               {/* Status Actions */}
-              {isReviewer && (
-                <div className="bg-white rounded-xl border border-gray-200 p-6">
-                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
-                    Update Status
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {ALL_STATUSES.filter((s) => {
-                      // If reviewer → only allow 2 statuses
-                      if (isReviewer) {
-                        return [
-                          "bank_verification_pending",
-                          "declined",
-                        ].includes(s);
-                      }
+              {(isAdmin || isReviewer) && (
+                <div className="space-y-4">
+                  {/* <div className="bg-white rounded-xl border border-gray-200 p-6">
+                    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                      Quick Status Actions
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {QUICK_STATUS_ACTIONS.map((action) => (
+                        <button
+                          key={action.value}
+                          onClick={() => handleStatusUpdate(action.value)}
+                          disabled={statusUpdating}
+                          className={`px-4 py-2 rounded-lg text-sm font-medium border transition cursor-pointer disabled:opacity-50 ${
+                            STATUS_COLORS[action.value] || ""
+                          }`}
+                        >
+                          {statusUpdating ? "..." : action.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div> */}
 
-                      // Otherwise → show all except current
-                      return s !== app.status;
-                    }).map((s) => (
-                      <button
-                        key={s}
-                        onClick={() => handleStatusUpdate(s)}
-                        disabled={statusUpdating}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium border transition cursor-pointer disabled:opacity-50 ${STATUS_COLORS[s] || ""}`}
-                      >
-                        {statusUpdating
-                          ? "..."
-                          : s
-                              .replace(/_/g, " ")
-                              .replace(/\b\w/g, (l) => l.toUpperCase())}
-                      </button>
-                    ))}
+                  <div className="bg-white rounded-xl border border-gray-200 p-6">
+                    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                      Additional Statuses
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {ALL_STATUSES.filter((s) => {
+                        if (isReviewer) {
+                          return [
+                            "bank_verification_pending",
+                            "declined",
+                            "declined_pb",
+                            "declined_hd",
+                          ].includes(s);
+                        }
+
+                        if (s === "bank_verification_pending") {
+                          return true;
+                        }
+
+                        return s !== app.status;
+                      }).map((s) => (
+                        <button
+                          key={s}
+                          onClick={() => handleStatusUpdate(s)}
+                          disabled={statusUpdating}
+                          className={`px-4 py-2 rounded-lg text-sm font-medium border transition cursor-pointer disabled:opacity-50 ${
+                            STATUS_COLORS[s] || ""
+                          }`}
+                        >
+                          {statusUpdating ? "..." : formatStatusLabel(s)}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -927,7 +994,7 @@ export default function ApplicationDetailPage() {
                 <span
                   className={`px-4 py-2 rounded-full text-sm font-semibold border ${STATUS_COLORS[app.status] || ""}`}
                 >
-                  {app.status.replace(/_/g, " ").toUpperCase()}
+                  {formatStatusLabel(app.status).toUpperCase()}
                 </span>
               </div>
             </div>
@@ -945,26 +1012,52 @@ export default function ApplicationDetailPage() {
             )}
 
             {/* Status Actions */}
-            {isReviewer && (
-              <div className="bg-white rounded-xl border border-gray-200 p-6">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
-                  Update Status
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {ALL_STATUSES.filter((s) => s !== app.status).map((s) => (
-                    <button
-                      key={s}
-                      onClick={() => handleStatusUpdate(s)}
-                      disabled={statusUpdating}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium border transition cursor-pointer disabled:opacity-50 ${STATUS_COLORS[s] || ""}`}
-                    >
-                      {statusUpdating
-                        ? "..."
-                        : s
-                            .replace(/_/g, " ")
-                            .replace(/\b\w/g, (l) => l.toUpperCase())}
-                    </button>
-                  ))}
+            {(isAdmin || isReviewer) && (
+              <div className="space-y-4">
+                {/* <div className="bg-white rounded-xl border border-gray-200 p-6">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                    Quick Status Actions
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {QUICK_STATUS_ACTIONS.map((action) => (
+                      <button
+                        key={action.value}
+                        onClick={() => handleStatusUpdate(action.value)}
+                        disabled={statusUpdating}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium border transition cursor-pointer disabled:opacity-50 ${
+                          STATUS_COLORS[action.value] || ""
+                        }`}
+                      >
+                        {statusUpdating ? "..." : action.label}
+                      </button>
+                    ))}
+                  </div>
+                </div> */}
+
+                <div className="bg-white rounded-xl border border-gray-200 p-6">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                    Additional Statuses
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {ALL_STATUSES.filter((s) => {
+                      if (app.status === "bank_verification_pending") {
+                        return true;
+                      }
+
+                      return s !== app.status;
+                    }).map((s) => (
+                      <button
+                        key={s}
+                        onClick={() => handleStatusUpdate(s)}
+                        disabled={statusUpdating}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium border transition cursor-pointer disabled:opacity-50 ${
+                          STATUS_COLORS[s] || ""
+                        }`}
+                      >
+                        {statusUpdating ? "..." : formatStatusLabel(s)}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}

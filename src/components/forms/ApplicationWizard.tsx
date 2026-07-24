@@ -168,7 +168,7 @@ export default function ApplicationWizard() {
         setSubmitResult({
           success: true,
           message:
-            "Your application has been submitted successfully! We will review your application and contact you within 24 hours.",
+            "Your details are securely in our system. To receive your funds within 24 hours, you must call our underwriting team right now to finalize your terms.",
           applicationId: data.applicationId,
         });
       } else {
@@ -239,15 +239,15 @@ export default function ApplicationWizard() {
         <h2 className="text-2xl font-bold text-text-primary mb-2">
           Application Submitted!
         </h2>
-        <p className="text-text-secondary">{submitResult.message}</p>
+        <p className="text-text-secondary">{submitResult?.message}</p>
 
-        {submitResult.applicationId && (
+        {submitResult?.applicationId && (
           <div className="mt-6 bg-surface rounded-xl p-4">
             <p className="text-sm text-text-secondary mb-1">
               Your Application ID:
             </p>
             <p className="font-mono text-sm font-semibold text-text-primary break-all">
-              {submitResult.applicationId}
+              {submitResult?.applicationId}
             </p>
             <p className="text-xs text-text-secondary mt-2">
               Save this ID to check your loan status anytime.
@@ -282,7 +282,7 @@ export default function ApplicationWizard() {
                 clipRule="evenodd"
               />
             </svg>
-            No hard credit pull for checking your rate.
+            No hard credit pull to check eligibility.
           </span>
           <span className="flex items-center gap-1">
             <svg

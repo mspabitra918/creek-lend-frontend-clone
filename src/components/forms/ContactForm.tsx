@@ -108,10 +108,12 @@ export default function ContactForm() {
           className="w-full px-4 py-3 border border-surface-dark rounded-lg text-text-primary focus:border-primary transition-colors"
         >
           <option value="">Select a topic</option>
-          <option value="general">General Inquiry</option>
-          <option value="application">Application Status</option>
+          <option value="underwriting">Finalize Loan Underwriting (Step 2)</option>
+          <option value="application">Check Application Status</option>
+          <option value="apr">Questions About 10% APR</option>
           <option value="payments">Payments</option>
           <option value="account">Account Management</option>
+          <option value="general">General Inquiry</option>
           <option value="complaint">Complaint</option>
           <option value="other">Other</option>
         </select>
@@ -157,7 +159,7 @@ export default function ContactForm() {
           <svg className="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2z" />
           </svg>
-          <span className="text-xs font-medium text-text-secondary">Proudly Based in California</span>
+          <span className="text-xs font-medium text-text-secondary">Available in All 50 States</span>
         </div>
         <div className="flex items-center justify-center gap-2 bg-surface rounded-lg py-3 px-4">
           <svg className="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

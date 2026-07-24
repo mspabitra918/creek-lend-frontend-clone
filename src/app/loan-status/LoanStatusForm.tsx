@@ -238,7 +238,7 @@ export default function LoanStatusForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-success hover:bg-success/90 text-white py-3 rounded-lg font-semibold transition-colors duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-semibold transition-colors duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Looking up..." : "Check Status"}
           </button>
@@ -249,7 +249,7 @@ export default function LoanStatusForm() {
           <p className="text-sm text-text-secondary leading-relaxed">
             <strong className="text-text-primary">Our PST Commitment:</strong>{" "}
             Applications finalized by 2 PM PST are processed for next-day
-            funding. Our California team is currently reviewing applications
+            funding. Our U.S.-based team is currently reviewing applications
             from{" "}
             {new Date().toLocaleDateString("en-US", {
               year: "numeric",
@@ -290,7 +290,7 @@ export default function LoanStatusForm() {
                 d="M3 21V3h18v18H3zm4-4h10M7 13h10M7 9h10"
               />
             </svg>
-            Proudly Based in Los Angeles, California
+            Licensed in All 50 States
           </span>
           <span className="flex items-center gap-1.5">
             <svg
@@ -306,7 +306,7 @@ export default function LoanStatusForm() {
                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            Real-Time PST Processing
+            Real-Time Status Updates
           </span>
         </div>
       </div>

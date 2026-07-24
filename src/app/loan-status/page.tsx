@@ -23,15 +23,15 @@ export default function LoanStatusPage() {
             Check Your Loan Status
           </h1>
           <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">
-            Enter your details below to see the real-time progress of your
-            California-processed application.
+            Enter your details below to see the real-time progress of your loan
+            application.
           </p>
         </div>
       </section>
 
       <section className="py-16 sm:py-24">
         <LoanStatusForm />
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
             <div className="flex items-center justify-center gap-2 bg-surface rounded-lg py-3 px-4">
               <svg
@@ -88,7 +88,7 @@ export default function LoanStatusPage() {
               </span>
             </div>
           </div>
-        </section>
+        </section> */}
       </section>
 
       {/* Trust Signals */}

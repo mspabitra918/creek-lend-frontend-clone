@@ -188,7 +188,7 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
           )}
         </div>
 
-        <div>
+        {/* <div>
           <label
             htmlFor="assistedByLoanAgent"
             className="block text-sm font-medium text-text-primary mb-1.5"
@@ -206,7 +206,7 @@ export default function StepPersonalInfo({ data, updateData, onNext }: Props) {
             className="w-full px-4 py-3 border border-surface-dark focus:border-primary rounded-lg transition-colors"
             placeholder="Enter loan agent's name if applicable"
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="mt-8 flex items-center justify-end gap-3">

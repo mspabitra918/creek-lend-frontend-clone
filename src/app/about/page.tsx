@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { BreadcrumbSchema } from "@/components/ui/JsonLd";
 import { SITE_NAME, LOAN_LIMITS } from "@/lib/constants";
 
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
 
 const PILLARS = [
   {
-    title: "Universal Acceptance",
+    title: "Credit Inclusivity",
     description:
-      "We believe your financial future is more than a three-digit number. We accept applicants across all credit score ranges.",
+      "We believe your financial future is more than a three-digit number. We proudly welcome applicants across all credit tiers, focusing on your current ability to repay rather than past mistakes.",
     icon: (
       <svg
         className="w-8 h-8"
@@ -132,6 +133,25 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Human-First trust photo */}
+      <section className="pb-16 sm:pb-24">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <figure className="rounded-3xl overflow-hidden shadow-xl">
+            <Image
+              src="/images/about/our-team.jpeg"
+              alt="The Brook Loans team at our Los Angeles office"
+              width={1200}
+              height={600}
+              className="w-full h-80 sm:h-110 object-cover"
+            />
+            <figcaption className="bg-white px-6 py-4 text-center text-sm text-text-secondary border-t border-surface-dark">
+              Real people, not algorithms &mdash; our team at our Los Angeles
+              headquarters.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
       {/* At a glance */}
       <section className="bg-surface py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -155,7 +175,7 @@ export default function AboutPage() {
             <div>
               <p className="text-3xl font-bold text-primary">All</p>
               <p className="text-sm text-text-secondary mt-1">
-                Credit Scores Accepted
+                Profiles Considered
               </p>
             </div>
             <div>

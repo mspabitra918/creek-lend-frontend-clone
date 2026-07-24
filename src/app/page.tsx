@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LoanCalculator from "@/components/ui/LoanCalculator";
+import Testimonials from "@/components/ui/Testimonials";
 import { SITE_NAME, BUSINESS_PHONE, BUSINESS_PHONE_TEL } from "@/lib/constants";
 import { Metadata } from "next";
 
@@ -46,7 +47,7 @@ export default function HomePage() {
     <>
       {/* 1. Hero Header */}
       <section className="bg-gradient-to-br from-primary via-primary-dark to-primary-light text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
@@ -54,17 +55,17 @@ export default function HomePage() {
                 <span className="text-secondary">All Credit Scores</span>
               </h1>
               <p className="mt-4 text-xl sm:text-2xl text-white font-semibold">
-                Borrow $2,000 to $10,000 with transparent terms and nationwide
-                availability.
+                Borrow $2,000 to $10,000 nationwide. Fast approvals & 24-hour
+                funding
               </p>
-              <p className="mt-6 text-lg text-white/80 leading-relaxed max-w-lg">
+              {/* <p className="mt-6 text-lg text-white/80 leading-relaxed max-w-lg">
                 At {SITE_NAME}, we believe in straightforward financing. Whether
                 you are living on the East Coast, the West Coast, or anywhere in
                 between, we provide personal loans to residents in all 50 U.S.
                 states. With a single, fixed annual percentage rate (APR) and
                 acceptance for all credit profiles, getting the funds you need
                 has never been clearer.
-              </p>
+              </p> */}
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/apply"
@@ -73,13 +74,13 @@ export default function HomePage() {
                 >
                   Apply Now
                 </Link>
-                <a
+                {/* <a
                   href={`tel:${BUSINESS_PHONE_TEL}`}
                   aria-label={`Call ${SITE_NAME} today at ${BUSINESS_PHONE}`}
                   className="border-2 border-white/30 hover:border-white/60 text-white px-8 py-4 rounded-lg font-semibold text-lg text-center transition-all duration-200"
                 >
                   Call Us Today
-                </a>
+                </a> */}
               </div>
               {/* Trust Tags */}
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/70">
@@ -95,7 +96,8 @@ export default function HomePage() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>All Credit Scores Accepted</span>
+                  {/* <span>All Credit Scores Accepted</span> */}
+                  <span>All 50 States</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
@@ -109,7 +111,8 @@ export default function HomePage() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>$0 Upfront Fees</span>
+                  {/* <span>$0 Upfront Fees</span> */}
+                  <span>Fixed 10% APR</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
@@ -123,7 +126,8 @@ export default function HomePage() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Serving All 50 States</span>
+                  <span>24 Hours Funding</span>
+                  {/* <span>Serving All 50 States</span> */}
                 </div>
               </div>
             </div>
@@ -322,7 +326,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <ul className="max-w-2xl mx-auto mb-16 space-y-3">
+          <ul className="max-w-2xl mx-auto  space-y-3">
             {LOAN_PURPOSE_USES.map((use) => (
               <li
                 key={use}
@@ -344,7 +348,7 @@ export default function HomePage() {
             ))}
           </ul>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 title: "Debt Consolidation",
@@ -413,7 +417,7 @@ export default function HomePage() {
                 </span>
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -536,6 +540,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Customer Testimonials */}
+      <Testimonials />
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-primary to-primary-light py-16">

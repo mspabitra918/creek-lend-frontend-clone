@@ -134,7 +134,7 @@ export default function RatesAndFeesPage() {
                   { fee: "Upfront Processing Fee", amount: "$0.00" },
                   {
                     fee: "Late Payment Fee",
-                    amount: "$15 (after 5-day grace period)",
+                    amount: "$5 (after 5-day grace period)",
                   },
                 ].map((item) => (
                   <tr key={item.fee}>
@@ -172,7 +172,7 @@ export default function RatesAndFeesPage() {
                       Region
                     </th>
                     <th className="text-left px-6 py-4 text-sm font-semibold text-text-primary">
-                      Flat Fee
+                      Fixed APR{" "}
                     </th>
                     <th className="text-left px-6 py-4 text-sm font-semibold text-text-primary">
                       Loan Range
@@ -181,23 +181,14 @@ export default function RatesAndFeesPage() {
                 </thead>
                 <tbody className="divide-y divide-surface-dark">
                   <tr>
-                    <td className="px-6 py-4 text-sm text-text-primary font-medium">
-                      California (HQ)
+                    <td className="px-6 py-4 text-sm font-medium text-text-primary">
+                      All 50 U.S. States
                     </td>
+
                     <td className="px-6 py-4 text-sm text-text-secondary">
-                      10%
+                      Fixed 10.00% APR
                     </td>
-                    <td className="px-6 py-4 text-sm text-text-secondary">
-                      $2,000 – $10,000
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="px-6 py-4 text-sm text-text-primary font-medium">
-                      United States (All States)
-                    </td>
-                    <td className="px-6 py-4 text-sm text-text-secondary">
-                      10%
-                    </td>
+
                     <td className="px-6 py-4 text-sm text-text-secondary">
                       $2,000 – $10,000
                     </td>
@@ -331,18 +322,20 @@ export default function RatesAndFeesPage() {
       {/* CTA */}
       <section className="bg-gradient-to-r from-primary to-primary-light py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white">
-            See Your Personalized Rate
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">
+            Ready to Get Started?
           </h2>
-          <p className="mt-4 text-white/80 text-lg">
-            Your actual rate depends on your credit profile. Check your rate now
-            — it won&apos;t affect your credit score.
+
+          <p className="mt-4 text-lg text-white/85 max-w-2xl mx-auto">
+            Apply today to lock in your fixed 10.00% APR. No hidden fees, no
+            variable rates, and no surprises.
           </p>
+
           <Link
             href="/apply"
-            className="mt-8 bg-secondary hover:bg-secondary-light text-primary-dark px-10 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl inline-block"
+            className="mt-8 inline-flex items-center justify-center rounded-xl bg-secondary hover:bg-secondary-light px-10 py-4 text-lg font-bold text-primary-dark transition-all shadow-lg hover:shadow-xl"
           >
-            Check Your Rate
+            Apply Now
           </Link>
         </div>
       </section>
