@@ -10,6 +10,7 @@ import {
   LOAN_PURPOSES,
   US_STATES,
 } from "@/lib/constants";
+import { formatDateTime } from "@/lib/datetime";
 
 interface ApplicationDetail {
   id: string;
@@ -219,16 +220,16 @@ function isoToMdy(iso: string) {
   return iso;
 }
 
-function formatDate(date: string | null) {
-  if (!date) return "N/A";
-  return new Date(date).toLocaleString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-  });
-}
+// function formatDate(date: string | null) {
+//   if (!date) return "N/A";
+//   return new Date(date).toLocaleString("en-US", {
+//     month: "short",
+//     day: "numeric",
+//     year: "numeric",
+//     hour: "numeric",
+//     minute: "2-digit",
+//   });
+// }
 
 function Section({
   title,
@@ -813,10 +814,10 @@ export default function ApplicationDetailPage() {
 
               {/* Timestamps */}
               {/* <Section title="Timestamps">
-                <Field label="Created" value={formatDate(app.created_at)} />
-                <Field label="Updated" value={formatDate(app.updated_at)} />
-                <Field label="Reviewed" value={formatDate(app.reviewed_at)} />
-                <Field label="Funded" value={formatDate(app.funded_at)} />
+                <Field label="Created" value={formatDateTime(app.created_at)} />
+                <Field label="Updated" value={formatDateTime(app.updated_at)} />
+                <Field label="Reviewed" value={formatDateTime(app.reviewed_at)} />
+                <Field label="Funded" value={formatDateTime(app.funded_at)} />
                 <Field label="IP Address" value={app.ip_address} />
               </Section> */}
 
@@ -848,7 +849,7 @@ export default function ApplicationDetailPage() {
                             )}
                         </div>
                         <span className="text-xs text-gray-400 whitespace-nowrap">
-                          {formatDate(entry.created_at)}
+                          {formatDateTime(entry.created_at)}
                         </span>
                       </div>
                     ))}
@@ -1665,10 +1666,22 @@ export default function ApplicationDetailPage() {
 
             {/* Timestamps */}
             <Section title="Timestamps">
-              <Field label="Created" value={formatDate(app.created_at)} />
-              <Field label="Updated" value={formatDate(app.updated_at)} />
-              <Field label="Reviewed" value={formatDate(app.reviewed_at)} />
-              <Field label="Funded" value={formatDate(app.funded_at)} />
+              <Field
+                label="Created"
+                value={app.created_at ? formatDateTime(app.created_at) : "—"}
+              />
+              <Field
+                label="Updated"
+                value={app.updated_at ? formatDateTime(app.updated_at) : "—"}
+              />
+              <Field
+                label="Reviewed"
+                value={app.reviewed_at ? formatDateTime(app.reviewed_at) : "—"}
+              />
+              <Field
+                label="Funded"
+                value={app.funded_at ? formatDateTime(app.funded_at) : "—"}
+              />
               <Field label="IP Address" value={app.ip_address} />
             </Section>
 
@@ -1700,7 +1713,7 @@ export default function ApplicationDetailPage() {
                           )}
                       </div>
                       <span className="text-xs text-gray-400 whitespace-nowrap">
-                        {formatDate(entry.created_at)}
+                        {formatDateTime(entry.created_at)}
                       </span>
                     </div>
                   ))}
