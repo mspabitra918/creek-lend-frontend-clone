@@ -49,6 +49,14 @@ const CANONICAL_HOST = "www.brookloans.com";
 const APEX_HOST = "brookloans.com";
 
 export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  // Protect /success
+  const submitted = request.cookies.get("applicationSubmitted");
+
+  if (pathname === "/thank-you" && !submitted) {
+    return NextResponse.redirect(new URL("/apply", request.url));
+  }
+
   // Only apply geo-blocking to the apply route and specific API routes
   const host = request.headers.get("host") ?? "";
 
@@ -90,5 +98,8 @@ export const config = {
   // Run on every request except Next.js internals and static assets so the
   // apex→www redirect covers all pages, while geo-blocking still applies to
   // its specific routes.
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)"],
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)",
+    "/thank-you",
+  ],
 };

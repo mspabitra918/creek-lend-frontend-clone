@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
 import { getUTMParams } from "@/lib/utils";
 import { apiUrl } from "@/lib/api";
+import { useRouter } from "next/navigation";
 
 const StepPersonalInfo = dynamic(() => import("./steps/StepPersonalInfo"));
 const StepIdentification = dynamic(() => import("./steps/StepIdentification"));
@@ -109,6 +110,7 @@ const initialData: ApplicationData = {
 };
 
 export default function ApplicationWizard() {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<ApplicationData>(initialData);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -155,29 +157,63 @@ export default function ApplicationWizard() {
     setCurrentStep((prev) => Math.max(prev - 1, 1));
   }, []);
 
+  // const handleSubmit = async () => {
+  //   setIsSubmitting(true);
+  //   try {
+  //     const res = await fetch(apiUrl("/api/apply"), {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(formData),
+  //     });
+  //     const data = await res.json();
+  //     if (res.ok) {
+  //       setSubmitResult({
+  //         success: true,
+  //         message:
+  //           "Your details are securely in our system. To receive your funds within 24 hours, you must call our underwriting team right now to finalize your terms.",
+  //         applicationId: data.applicationId,
+  //       });
+  //     } else {
+  //       setSubmitResult({
+  //         success: false,
+  //         message: data.error || "An error occurred. Please try again.",
+  //       });
+  //     }
+  //   } catch {
+  //     setSubmitResult({
+  //       success: false,
+  //       message: "Network error. Please check your connection and try again.",
+  //     });
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
+
   const handleSubmit = async () => {
     setIsSubmitting(true);
+
     try {
       const res = await fetch(apiUrl("/api/apply"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+
       const data = await res.json();
+
       if (res.ok) {
-        setSubmitResult({
-          success: true,
-          message:
-            "Your details are securely in our system. To receive your funds within 24 hours, you must call our underwriting team right now to finalize your terms.",
-          applicationId: data.applicationId,
-        });
+        router.push(`/thank-you?applicationId=${data.applicationId}`);
       } else {
         setSubmitResult({
           success: false,
           message: data.error || "An error occurred. Please try again.",
         });
       }
-    } catch {
+      document.cookie =
+        "applicationSubmitted=true; path=/; max-age=300; SameSite=Lax";
+    } catch (error) {
+      console.error(error);
+
       setSubmitResult({
         success: false,
         message: "Network error. Please check your connection and try again.",
@@ -218,52 +254,52 @@ export default function ApplicationWizard() {
   }
 
   // Success state
-  if (submitResult?.success) {
-    return (
-      <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-        <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg
-            className="w-8 h-8 text-success"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-        </div>
-        <h2 className="text-2xl font-bold text-text-primary mb-2">
-          Application Submitted!
-        </h2>
-        <p className="text-text-secondary">{submitResult?.message}</p>
+  // if (submitResult?.success) {
+  //   return (
+  //     <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+  //       <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+  //         <svg
+  //           className="w-8 h-8 text-success"
+  //           fill="none"
+  //           stroke="currentColor"
+  //           viewBox="0 0 24 24"
+  //         >
+  //           <path
+  //             strokeLinecap="round"
+  //             strokeLinejoin="round"
+  //             strokeWidth={2}
+  //             d="M5 13l4 4L19 7"
+  //           />
+  //         </svg>
+  //       </div>
+  //       <h2 className="text-2xl font-bold text-text-primary mb-2">
+  //         Application Submitted!
+  //       </h2>
+  //       <p className="text-text-secondary">{submitResult?.message}</p>
 
-        {submitResult?.applicationId && (
-          <div className="mt-6 bg-surface rounded-xl p-4">
-            <p className="text-sm text-text-secondary mb-1">
-              Your Application ID:
-            </p>
-            <p className="font-mono text-sm font-semibold text-text-primary break-all">
-              {submitResult?.applicationId}
-            </p>
-            <p className="text-xs text-text-secondary mt-2">
-              Save this ID to check your loan status anytime.
-            </p>
-          </div>
-        )}
+  //       {submitResult?.applicationId && (
+  //         <div className="mt-6 bg-surface rounded-xl p-4">
+  //           <p className="text-sm text-text-secondary mb-1">
+  //             Your Application ID:
+  //           </p>
+  //           <p className="font-mono text-sm font-semibold text-text-primary break-all">
+  //             {submitResult?.applicationId}
+  //           </p>
+  //           <p className="text-xs text-text-secondary mt-2">
+  //             Save this ID to check your loan status anytime.
+  //           </p>
+  //         </div>
+  //       )}
 
-        <a
-          href="/loan-status"
-          className="inline-block mt-6 bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-md hover:shadow-lg"
-        >
-          Check Loan Status
-        </a>
-      </div>
-    );
-  }
+  //       <a
+  //         href="/loan-status"
+  //         className="inline-block mt-6 bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-md hover:shadow-lg"
+  //       >
+  //         Check Loan Status
+  //       </a>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden relative">

@@ -5,11 +5,16 @@ import { usePathname } from "next/navigation";
 const Header = dynamic(() => import("./Header"), { ssr: true });
 const Footer = dynamic(() => import("./Footer"), { ssr: true });
 
-export default function ConditionalLayout({ children }: { children: React.ReactNode }) {
+export default function ConditionalLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
   const isAdmin = pathname.startsWith("/admin");
+  const thankYou = pathname.startsWith("/thank-you");
 
-  if (isAdmin) {
+  if (isAdmin || thankYou) {
     return <main>{children}</main>;
   }
 
