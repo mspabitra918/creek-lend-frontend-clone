@@ -2,7 +2,7 @@
  * Date/time formatting for the admin portal.
  *
  * Every timestamp an underwriter sees is rendered in California time, so two
- * admins in different locations reading the same queue always see the same
+ * admin in different locations reading the same queue always see the same
  * clock. We use the IANA zone rather than a fixed -08:00 offset, so the
  * display follows daylight saving automatically (PST in winter, PDT in
  * summer); `formatDateTime` prints the abbreviation to make that explicit.

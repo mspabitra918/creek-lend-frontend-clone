@@ -96,7 +96,7 @@ function MessagesListContent() {
   };
 
   useEffect(() => {
-    if (!loading && !user) router.replace("/admins");
+    if (!loading && !user) router.replace("/admin");
   }, [loading, user, router]);
 
   const fetchMessages = useCallback(async () => {
@@ -147,29 +147,29 @@ function MessagesListContent() {
       <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-6">
           <Link
-            href="/admins/dashboard"
+            href="/admin/dashboard"
             className="text-xl font-bold text-primary"
           >
             Brook Loans
           </Link>
           <div className="hidden sm:flex items-center gap-4 text-sm">
             <Link
-              href="/admins/dashboard"
+              href="/admin/dashboard"
               className="text-gray-600 hover:text-primary transition"
             >
               Dashboard
             </Link>
             <Link
-              href="/admins/applications"
+              href="/admin/applications"
               className="text-gray-600 hover:text-primary transition"
             >
               Applications
             </Link>
-            <Link href="/admins/message" className="text-primary font-medium">
+            <Link href="/admin/message" className="text-primary font-medium">
               Message
             </Link>
             <Link
-              href="/admins/user"
+              href="/admin/user"
               className="text-gray-600 hover:text-primary transition"
             >
               User

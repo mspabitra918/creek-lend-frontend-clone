@@ -77,7 +77,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     if (!loading && !user) {
-      router.replace("/admins");
+      router.replace("/admin");
     }
   }, [loading, user, router]);
 
@@ -148,7 +148,7 @@ export default function AdminDashboard() {
       <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-6">
           <Link
-            href="/admins/dashboard"
+            href="/admin/dashboard"
             className="text-xl font-bold text-primary"
           >
             {/* <Image
@@ -163,23 +163,23 @@ export default function AdminDashboard() {
             </span>
           </Link>
           <div className="hidden sm:flex items-center gap-4 text-sm">
-            <Link href="/admins/dashboard" className="text-primary font-medium">
+            <Link href="/admin/dashboard" className="text-primary font-medium">
               Dashboard
             </Link>
             <Link
-              href="/admins/applications"
+              href="/admin/applications"
               className="text-gray-600 hover:text-primary transition"
             >
               Applications
             </Link>
             <Link
-              href="/admins/message"
+              href="/admin/message"
               className="text-gray-600 hover:text-primary transition"
             >
               Message
             </Link>
             <Link
-              href="/admins/user"
+              href="/admin/user"
               className="text-gray-600 hover:text-primary transition"
             >
               User
@@ -287,7 +287,7 @@ export default function AdminDashboard() {
                   Recent Applications
                 </h2>
                 <Link
-                  href="/admins/applications"
+                  href="/admin/applications"
                   className="text-sm text-primary hover:underline"
                 >
                   View All
@@ -340,7 +340,7 @@ export default function AdminDashboard() {
                           </td>
                           <td className="px-6 py-4">
                             <Link
-                              href={`/admins/applications/${app.id}`}
+                              href={`/admin/applications/${app.id}`}
                               className="text-primary text-sm hover:underline"
                             >
                               View

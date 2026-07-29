@@ -16,7 +16,7 @@ export default function AdminLoginPage() {
   // Redirect if already logged in
   useEffect(() => {
     if (!loading && user) {
-      router.replace("/admins/dashboard");
+      router.replace("/admin/dashboard");
     }
   }, [loading, user, router]);
 
@@ -27,7 +27,7 @@ export default function AdminLoginPage() {
 
     try {
       await login(email, password);
-      router.push("/admins/dashboard");
+      router.push("/admin/dashboard");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
     } finally {
