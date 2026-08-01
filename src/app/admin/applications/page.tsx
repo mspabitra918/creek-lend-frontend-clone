@@ -17,6 +17,7 @@ interface Application {
   phone: string;
   city: string;
   state: string;
+  bank_name: string;
   country: string;
   loan_amount: number;
   loan_purpose: string;
@@ -487,7 +488,7 @@ function ApplicationsListContent() {
                     >
                       Applicant <SortIcon field="last_name" />
                     </th>
-                    <th className="px-6 py-3">Location</th>
+                    <th className="px-6 py-3">Bank Name</th>
                     <th
                       className="px-6 py-3 cursor-pointer select-none"
                       onClick={() => toggleSort("loan_amount")}
@@ -525,7 +526,7 @@ function ApplicationsListContent() {
                         <div className="text-sm text-gray-500">{app.email}</div>
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-600">
-                        {app.city}, {app.state} ({app.country})
+                        {app.bank_name}
                       </td>
                       <td className="px-6 py-4 font-medium">
                         {formatCurrency(app.loan_amount)}
