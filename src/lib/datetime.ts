@@ -31,33 +31,20 @@ export function formatDate(iso: string | null | undefined): string {
 }
 
 /** "Jul 20, 2026, 3:42 PM PDT" — the Pacific wall-clock time of an instant. */
-// export function formatDateTime(iso: string | null | undefined): string {
-//   const d = parse(iso);
-//   return d
-//     ? d.toLocaleString("en-US", {
-//         timeZone: ADMIN_TIME_ZONE,
-//         year: "numeric",
-//         month: "short",
-//         day: "numeric",
-//         hour: "numeric",
-//         minute: "2-digit",
-//         hour12: true,
-//         timeZoneName: "short",
-//       })
-//     : EM_DASH;
-// }
-
-export function formatDateTime(iso: string) {
-  return new Date(iso).toLocaleString("en-US", {
-    timeZone: ADMIN_TIME_ZONE,
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-    timeZoneName: "short",
-  });
+export function formatDateTime(iso: string | null | undefined): string {
+  const d = parse(iso);
+  return d
+    ? d.toLocaleString("en-US", {
+        timeZone: ADMIN_TIME_ZONE,
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+        timeZoneName: "short",
+      })
+    : EM_DASH;
 }
 
 /**

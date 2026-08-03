@@ -11,7 +11,7 @@ import {
   US_STATES,
 } from "@/lib/constants";
 import { formatDateTime } from "@/lib/datetime";
-
+// encrypted;
 interface ApplicationDetail {
   id: string;
   first_name: string;
@@ -1293,14 +1293,14 @@ export default function ApplicationDetailPage() {
                   <EditableField
                     label="Monthly Income"
                     name="monthly_income"
-                    type="number"
+                    type="text"
                     value={formData.monthly_income}
                     onChange={handleFormChange}
                   />
                   <EditableField
                     label="Years Employed"
                     name="years_employed"
-                    type="number"
+                    type="text"
                     value={formData.years_employed}
                     onChange={handleFormChange}
                   />
@@ -1326,7 +1326,7 @@ export default function ApplicationDetailPage() {
                   <EditableField
                     label="Loan Amount ($2,000 - $10,000)"
                     name="loan_amount"
-                    type="number"
+                    type="text"
                     min={2000}
                     max={10000}
                     value={formData.loan_amount}
@@ -1364,7 +1364,7 @@ export default function ApplicationDetailPage() {
                   {/* <EditableField
                     label="Loan Term (months)"
                     name="loan_term"
-                    type="number"
+                    type="text"
                     value={formData.loan_term}
                     onChange={handleFormChange}
                   /> */}
