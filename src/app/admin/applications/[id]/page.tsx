@@ -638,6 +638,7 @@ export default function ApplicationDetailPage() {
                           return [
                             // "bank_verification_pending",
                             // "declined",
+                            "bank_reverification",
                             "declined_pb",
                             "declined_hd",
                           ].includes(s);
