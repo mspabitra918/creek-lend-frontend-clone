@@ -930,7 +930,7 @@ export default function ApplicationDetailPage() {
             {user.name} ({user.role})
           </span>
           <button
-            onClick={logout}
+            onClick={() => logout()}
             className="text-sm text-red-600 hover:text-red-800 font-medium cursor-pointer"
           >
             Logout
