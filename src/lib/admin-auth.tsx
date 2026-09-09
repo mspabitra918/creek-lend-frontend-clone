@@ -22,7 +22,7 @@ interface AdminAuthContextType {
   token: string | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
-  logout: (reason?: string) => void;
+  logout: (reason?: unknown) => void;
   isAdmin: boolean;
   isReviewer: boolean;
 }
@@ -34,12 +34,19 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const logout = useCallback((reason?: string) => {
+  const logout = useCallback((reason?: unknown) => {
     setUser(null);
     setToken(null);
     localStorage.removeItem("admin_token");
+
     if (reason) {
-      sessionStorage.setItem("logout_reason", reason);
+      const reasonString =
+        typeof reason === "string"
+          ? reason
+          : reason instanceof Error
+            ? reason.message
+            : "Session expired.";
+      sessionStorage.setItem("logout_reason", reasonString);
     }
   }, []);
 
@@ -155,9 +162,14 @@ export function useAdminApi() {
 
       if (res.status === 401) {
         const data = await res.json().catch(() => ({}));
+
+        // Extract error message string safely
         const message =
-          data.error ||
-          "Logged out because your account was accessed from another device.";
+          typeof data.error === "string"
+            ? data.error
+            : typeof data.message === "string"
+              ? data.message
+              : "Logged out because your account was accessed from another device.";
 
         logout(message);
         window.location.href = "/admin";
