@@ -13,6 +13,15 @@ export default function AdminLoginPage() {
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
+  // Check for session logout reason on initial render
+  useEffect(() => {
+    const logoutReason = sessionStorage.getItem("logout_reason");
+    if (logoutReason) {
+      setError(logoutReason);
+      sessionStorage.removeItem("logout_reason"); // Clean up so it doesn't persist on page refresh
+    }
+  }, []);
+
   // Redirect if already logged in
   useEffect(() => {
     if (!loading && user) {
@@ -48,14 +57,7 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-lg p-8">
           <div className="text-center mb-8">
-            {/* <Image
-              src="/logo-dark.png"
-              alt="Brook Loans"
-              width={180}
-              height={45}
-              className="mx-auto"
-            /> */}
-            <span className=" font-extrabold tracking-tight text-[#1b4d3e] text-3xl">
+            <span className="font-extrabold tracking-tight text-[#1b4d3e] text-3xl">
               Brook<span className="text-[#0f3329] font-normal"> Loans</span>
             </span>
             <p className="text-text-secondary mt-3">Admin Portal</p>

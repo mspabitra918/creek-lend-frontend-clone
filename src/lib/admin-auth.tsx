@@ -22,7 +22,7 @@ interface AdminAuthContextType {
   token: string | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
-  logout: () => void;
+  logout: (reason?: string) => void;
   isAdmin: boolean;
   isReviewer: boolean;
 }
@@ -34,10 +34,13 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const logout = useCallback(() => {
+  const logout = useCallback((reason?: string) => {
     setUser(null);
     setToken(null);
     localStorage.removeItem("admin_token");
+    if (reason) {
+      sessionStorage.setItem("logout_reason", reason);
+    }
   }, []);
 
   // Verify stored token on mount
@@ -51,19 +54,24 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
     fetch(apiUrl("/api/admin/auth"), {
       headers: { Authorization: `Bearer ${stored}` },
     })
-      .then((res) => {
-        if (!res.ok) throw new Error("Invalid token");
+      .then(async (res) => {
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(
+            data.error || "Session expired or active on another device.",
+          );
+        }
         return res.json();
       })
       .then((data) => {
         setUser(data.user);
         setToken(stored);
       })
-      .catch(() => {
-        localStorage.removeItem("admin_token");
+      .catch((err) => {
+        logout(err instanceof Error ? err.message : "Session expired.");
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [logout]);
 
   const login = async (email: string, password: string) => {
     let res: Response;
@@ -146,8 +154,14 @@ export function useAdminApi() {
       });
 
       if (res.status === 401) {
-        logout();
-        throw new Error("Session expired");
+        const data = await res.json().catch(() => ({}));
+        const message =
+          data.error ||
+          "Logged out because your account was accessed from another device.";
+
+        logout(message);
+        window.location.href = "/admin";
+        throw new Error(message);
       }
 
       return res;
