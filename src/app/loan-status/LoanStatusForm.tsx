@@ -114,6 +114,21 @@ const STATUS_CONFIG: Record<
     color: "text-yellow-700",
     bg: "bg-yellow-50 border-yellow-200",
   },
+  declined_hd: {
+    label: "Declined - HD",
+    color: "text-red-700",
+    bg: "bg-red-50 border-red-200",
+    description:
+      "Unfortunately, your application was declined. Please contact us for more details.",
+  },
+
+  declined_pb: {
+    label: "Declined - PB",
+    color: "text-red-700",
+    bg: "bg-red-50 border-red-200",
+    description:
+      "Unfortunately, your application was declined. Please contact us for more details.",
+  },
 };
 
 const PURPOSE_LABELS: Record<string, string> = {
