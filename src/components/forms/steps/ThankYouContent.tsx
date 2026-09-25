@@ -6,6 +6,7 @@ export default function ThankYouContent() {
   const searchParams = useSearchParams();
 
   const applicationId = searchParams.get("applicationId");
+  const email = searchParams.get("email");
 
   return (
     <div className="min-h-screen bg-[#e9f1ee] flex items-center justify-center px-4">
@@ -51,7 +52,7 @@ export default function ThankYouContent() {
         )}
 
         <a
-          href="/loan-status"
+          href={`/loan-status?applicationId=${applicationId}&email=${email}`}
           className="inline-block mt-6 bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-md hover:shadow-lg"
         >
           Check Loan Status

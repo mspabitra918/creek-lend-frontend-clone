@@ -511,6 +511,13 @@ export default function ApplicationDetailPage() {
     }
   };
 
+  const REVIEWER_ONLY_ACTIONS = [
+    // "declined",
+    "declined_pb",
+    "declined_hd",
+    "bank_reverification",
+  ];
+
   if (loading || !user) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -606,14 +613,16 @@ export default function ApplicationDetailPage() {
               )}
 
               {/* Status Actions */}
-              {(isAdmin || isReviewer) && (
+              {isReviewer && (
                 <div className="space-y-4">
-                  {/* <div className="bg-white rounded-xl border border-gray-200 p-6">
+                  <div className="bg-white rounded-xl border border-gray-200 p-6">
                     <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
                       Quick Status Actions
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                      {QUICK_STATUS_ACTIONS.map((action) => (
+                      {QUICK_STATUS_ACTIONS.filter((action) =>
+                        REVIEWER_ONLY_ACTIONS.includes(action.value),
+                      ).map((action) => (
                         <button
                           key={action.value}
                           onClick={() => handleStatusUpdate(action.value)}
@@ -623,42 +632,6 @@ export default function ApplicationDetailPage() {
                           }`}
                         >
                           {statusUpdating ? "..." : action.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div> */}
-
-                  <div className="bg-white rounded-xl border border-gray-200 p-6">
-                    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
-                      Additional Statuses
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {ALL_STATUSES.filter((s) => {
-                        if (isReviewer) {
-                          return [
-                            // "bank_verification_pending",
-                            // "declined",
-                            "bank_reverification",
-                            "declined_pb",
-                            "declined_hd",
-                          ].includes(s);
-                        }
-
-                        // if (s === "bank_verification_pending") {
-                        //   return true;
-                        // }
-
-                        return s !== app.status;
-                      }).map((s) => (
-                        <button
-                          key={s}
-                          onClick={() => handleStatusUpdate(s)}
-                          disabled={statusUpdating}
-                          className={`px-4 py-2 rounded-lg text-sm font-medium border transition cursor-pointer disabled:opacity-50 ${
-                            STATUS_COLORS[s] || ""
-                          }`}
-                        >
-                          {statusUpdating ? "..." : formatStatusLabel(s)}
                         </button>
                       ))}
                     </div>
@@ -1013,10 +986,9 @@ export default function ApplicationDetailPage() {
               </div>
             )}
 
-            {/* Status Actions */}
             {(isAdmin || isReviewer) && (
               <div className="space-y-4">
-                {/* <div className="bg-white rounded-xl border border-gray-200 p-6">
+                <div className="bg-white rounded-xl border border-gray-200 p-6">
                   <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
                     Quick Status Actions
                   </h3>
@@ -1034,18 +1006,14 @@ export default function ApplicationDetailPage() {
                       </button>
                     ))}
                   </div>
-                </div> */}
+                </div>
 
-                <div className="bg-white rounded-xl border border-gray-200 p-6">
+                {/* <div className="bg-white rounded-xl border border-gray-200 p-6">
                   <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
                     Additional Statuses
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {ALL_STATUSES.filter((s) => {
-                      // if (app.status === "bank_verification_pending") {
-                      //   return true;
-                      // }
-
                       return s !== app.status;
                     }).map((s) => (
                       <button
@@ -1060,7 +1028,7 @@ export default function ApplicationDetailPage() {
                       </button>
                     ))}
                   </div>
-                </div>
+                </div> */}
               </div>
             )}
 

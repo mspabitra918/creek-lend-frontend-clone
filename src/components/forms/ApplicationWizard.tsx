@@ -202,7 +202,9 @@ export default function ApplicationWizard() {
       const data = await res.json();
 
       if (res.ok) {
-        router.push(`/thank-you?applicationId=${data.applicationId}`);
+        router.push(
+          `/thank-you?email=${formData.email}&applicationId=${encodeURIComponent(data?.applicationId)}`,
+        );
       } else {
         setSubmitResult({
           success: false,
